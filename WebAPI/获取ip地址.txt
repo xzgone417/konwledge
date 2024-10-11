@@ -1,0 +1,47 @@
+  // import os from "os";
+
+// const getNetworkIp = () => {
+  //   let needHost = ""; // 打开的host
+  //   try {
+  //     // 获得网络接口列表
+  //     let network = os.networkInterfaces();
+  //     // console.log("network",network)
+  //     for (let dev in network) {
+  //       let iface = network[dev];
+  //       for (let i = 0; i < iface!.length; i++) {
+  //         let alias = iface![i];
+  //         if (
+  //           alias.family === "IPv4" &&
+  //           alias.address !== "127.0.0.1" &&
+  //           !alias.internal
+  //         ) {
+  //           needHost = alias.address;
+  //           // console.log("alias.address",alias.address)
+  //         }
+  //         // console.log("alias",alias)
+  //       }
+  //     }
+  //   } catch (e) {
+  //     needHost = "localhost";
+  //   }
+  //   return needHost;
+  // };
+
+
+// const getLocation = async () => {
+//   await axios
+//     .get("https://api.ipify.org?format=json")
+//     .then((response) => {
+//       localIP.value = response.data.ip;
+//       // 使用获取到的IP地址查询国家信息
+//       return axios.get("http://ip-api.com/json/" + localIP.value);
+//     })
+//     .then((response) => {
+//       if (response.data.status === "success") {
+//         myData.pre_area = response.data.countryCode;
+//       }
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching IP or country data:", error);
+//     });
+// };

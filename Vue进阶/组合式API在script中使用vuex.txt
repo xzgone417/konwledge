@@ -1,0 +1,11 @@
+state：          state.num     模块化 state.news.num
+
+mutations:        commit("index中的方法",参数)             模块化：   commit("news/setNum",参数 )
+
+存本地时key要是字符串类型
+
+可以将createApp()函数赋给一个对象
+//创建一个Vue的实例
+const app = createApp(App)
+下面引用照写不误
+app.use(store).use(router).mount('#app')

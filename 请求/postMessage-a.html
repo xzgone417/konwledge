@@ -1,0 +1,37 @@
+postMessage 方法用于安全地实现跨源通信。它有两个主要参数：
+
+message：要发送的数据。该数据可以是任何可以被结构化克隆算法处理的数据类型，包括对象、数组、字符串、数字等。
+targetOrigin：指定目标窗口的源，可以是协议、域名和端口号的组合。这个参数非常重要，因为它用于安全地限制哪些窗口可以接收消息。
+以下是 postMessage 方法的参数要求：
+
+message：必须参数，可以是任何类型的数据。
+targetOrigin：可选参数。如果指定为 *，则消息可以发送到任何域。但在生产环境中，出于安全考虑，应该始终指定一个明确的、可信的源。
+关于 targetOrigin 的详细说明：
+
+如果你只希望消息发送到特定的域，你应该指定一个精确的源。例如，如果你知道目标页面位于 https://example.com/，你可以将 targetOrigin 设置为 "https://example.com"。
+如果你指定了目标域下的特定HTML文件，例如 "https://example.com/specific-page.html"，则只有来自该特定页面的窗口才能接收消息。通常，你不需要这么精确，而是只需要指定域名即可。
+下面是一个 postMessage 的示例：
+
+// 在发送消息的页面中
+var iframeWindow = document.getElementById('iframeId').contentWindow;
+var targetOrigin = "https://example.com"; // 指定目标域
+var message = { type: "greeting", text: "Hello from the parent page!" };
+
+iframeWindow.postMessage(message, targetOrigin);
+在这个示例中，targetOrigin 被设置为 "https://example.com"，这意味着只有来自 https://example.com 的窗口才能接收这条消息。这不需要具体到HTML文件，只需要指定到域名。
+
+在接收消息的页面中，你需要设置一个事件监听器来接收消息：
+
+// 在接收消息的页面中
+window.addEventListener("message", receiveMessage, false);
+
+function receiveMessage(event) {
+  // 检查消息来源是否为预期的来源
+  if (event.origin !== "https://example.com") {
+    return; // 如果来源不是预期来源，忽略该消息
+  }
+
+  // 处理接收到的消息
+  console.log("Received message: ", event.data);
+}
+在 receiveMessage 函数中，我们检查 event.origin 来确保消息来自我们信任的源。如果来源不匹配，我们应该忽略该消息。这有助于防止潜在的安全问题。

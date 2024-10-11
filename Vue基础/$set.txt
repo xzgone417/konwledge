@@ -1,0 +1,6 @@
+Vue.set，和this.$set()是一样的，
+
+this.$set(target, key, value)
+target: 要更改的数据源（可以使对象或者数组）
+key: 要更改的属性
+value: 赋给该属性的值

@@ -1,0 +1,33 @@
+.product-categories {
+    margin-top: -5px;
+
+    .cat-item {
+        font-weight  : 300;
+        font-size    : 12px;
+        line-height  : 1.5;
+        color        : #6e6e6e;
+        word-break   : break-word;
+        padding-left : 10px;
+        position     : relative;
+        transition   : all 0.2s;
+        margin-bottom: 12px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        .server-item-span {
+            display     : inline-block;
+            width       : 30%;
+            padding-left: 3%;
+        }
+
+        &:hover {
+            color: #e40914;
+
+            &:before {
+                color: #e40914;
+            }
+        }
+    }
+}

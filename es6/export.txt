@@ -1,0 +1,5 @@
+import加不加{}取决于export
+而export暴露的值分两种
+
+反正export default的特殊点在于不用解构，
+而想要只暴露一个default，获取文件所有信息，那就把default包裹住所有信息，或者赋给一个对象，再把对象export default

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes example {
+            from {
+                background-color: red;
+            }
+
+            50% {
+                background-color: rgb(43, 255, 0);
+            }
+
+            to {
+                background-color: yellow;
+            }
+        }
+
+        /* 应用动画到元素 */
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* animation-name: example;
+            animation-duration: 4s; */
+            animation: example 4s forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    `animation` 属性是一个复合属性，它可以设置以下几个动画属性：
+
+    1. `animation-name`：定义动画的名称。你需要在 `@keyframes` 规则中定义这个名称。
+
+    2. `animation-duration`：定义动画完成一个周期所花费的时间。时间值可以是秒（s）或毫秒（ms）。
+
+    3. `animation-timing-function`：定义动画的速度曲线。常用的值有 `ease`（默认值，慢-快-慢）、`linear`（匀速）、`ease-in`（慢-快）、`ease-out`（快-慢）等。
+
+    4. `animation-delay`：定义动画开始前的延迟时间。时间值可以是秒（s）或毫秒（ms）。
+
+    5. `animation-iteration-count`：定义动画的播放次数。常用的值有 `infinite`（无限次播放）、`3`（播放 3 次）等。
+
+    6. `animation-direction`：定义动画的播放方向。常用的值有 `normal`（默认值，正向播放）、`reverse`（反向播放）、`alternate`（正向播放，然后反向播放，如此循环）等。
+
+    7. `animation-fill-mode`：定义动画在播放前和播放后如何应用样式。常用的值有
+    `none`（默认值，动画结束后，元素会回到动画开始时的状态）、`forwards`（动画结束后，元素会保持动画结束时的状态）、`backwards`（动画开始前，元素会先应用动画开始时的状态）、`both`（动画开始前，元素会先应用动画开始时的状态。动画结束后，元素会保持动画结束时的状态）。
+
+    8. `animation-play-state`：定义动画的播放状态。常用的值有 `running`（默认值，动画正在播放）、`paused`（动画暂停播放）。
+
+    在 `animation` 属性中，你可以按照上述顺序设置这些值。例如：
+
+    ```css
+    div {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    animation: example 4s ease-in 1s infinite alternate;
+    }
+    ```
+
+
+
+
+
+    在这个例子中，`animation: example 4s ease-in 1s infinite alternate;` 表示动画的名称是 `example`，动画完成一个周期所花费的时间是 4 秒，动画的速度曲线是
+    `ease-in`，动画开始前的延迟时间是 1 秒，动画的播放次数是无限次，动画的播放方向是正向播放，然后反向播放，如此循环。
+</body>
+
+</html>

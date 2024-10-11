@@ -1,0 +1,15 @@
+vue.config.js在vue-cli里面是不会自动创建的，需要自己额外复制一份过来再运行
+
+而在vite创建项目中，虽然·会自己生成vite.config.js，但是没有设置端口号的选项，即没有devServer{}或者Serve{}
+ 在vite.config.js中的写法
+server: {
+      open: true,
+      port: 4000, // 设置服务启动端口号
+      proxy: {
+        '/api': {
+          target: 'http://dev.api.xxx.com', // 后端接口的域名
+          changeOrigin: true,
+          rewrite: path => path.replace(/^\/api/, ''),
+        },
+      },
+    },

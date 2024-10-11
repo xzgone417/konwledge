@@ -1,0 +1,22 @@
+/**
+ * @explain: 防抖
+ */
+const triggerGenerateData = () => {
+    const firstClick: Boolean = !timer;
+    // if (firstClick) {
+    //     // 第一次会执行
+    //     console.log(1);
+    // }
+    // 如果定时器存在清空定时器
+    if (timer) {
+        clearTimeout(timer);
+    }
+    // 设置定时器，此时firstClick会变为false，规定时间后time才会为null
+    timer = setTimeout(() => {
+        timer = null;
+        // 如果firstClick为true，执行
+        // if (!firstClick) {
+        console.log(2);
+        // }
+    }, 1000);
+};

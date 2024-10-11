@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page B</title>
+  </head>
+  <body>
+    <script>
+      window.addEventListener("message", function (event) {
+        // 检查消息来源是否安全
+        if (event.origin !== "http://127.0.0.1:5501") {
+          return;
+        }
+        if (event.data.type === "message") {
+          console.log("Message from Page A:", event.data);
+          // 在这里执行你需要的操作
+        }
+
+        // 可以选择回复消息
+        // event.source.postMessage("Hello from Page B!", event.origin);
+      });
+    </script>
+  </body>
+</html>

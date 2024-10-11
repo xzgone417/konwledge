@@ -1,0 +1,8 @@
+能用forEach箭头函数遍历，就用forEach箭头函数，同理使用map等数组循环方法，尽量减少使用普通for循环。但是forEach无法做到跳出循环
+例：forEach箭头函数：
+data.cityJson.forEach(item=>{
+if(item???)
+})
+
+for循环数组长度
+arr.length 。有三个值长度就为3，但数组序号是从0开始的，所以说 i<=arr.length-1或者i<arr.length

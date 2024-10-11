@@ -1,0 +1,3 @@
+如果是一个操作设计多个异步过程，那么就用Promise来做，在then()里面做下一步
+如果是多个平行执行的异步操作，就用async和await，让下面一个等待上一个异步完成再输出结果
+async和await，async函数内部只会一步步执行，先执行promise内部，return出来后再往下执行，不影响的是和调用async函数时和async并行的其他函数

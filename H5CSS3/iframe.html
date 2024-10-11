@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <a
+        href="https://pay.pawpack.sofishgame.com/index.html?encodeStr=eyJyb2xlSUQiOiIxMDk4MzI0MjQ1NDQ0NjkxNjM0Iiwicm9sZU5hbWUiOiJoZXJvMTAxMDUyMSIsInNlcnZlcklEIjo0LCJzZXJ2ZXJOYW1lIjoiNOacjSIsInJvbGVMZXZlbCI6IjQiLCJ2aXAiOiIxIiwiYXBwTGFuZyI6InpoIiwicHJvZHVjdElEIjoiMTk2IiwicHJvZHVjdE5hbWUiOiIxMjjlhYPnu4jouqvljaEiLCJwcm9kdWN0RGVzYyI6IjEyOOWFg+e7iOi6q+WNoSIsInByaWNlIjoxOTk5LCJjcE9yZGVySUQiOiI4MmM3ZmJiNDI0MTY0YjI5IiwicGF5Tm90aWZ5VXJsIjoiaHR0cHM6Ly9jcC5wYXdwYWNrLnNvZmlzaGdhbWUuY29tL3B1c2gvemR5SGFuZGxlTm90aWZ5IiwiZXh0cmEiOiI4MmM3ZmJiNDI0MTY0YjI5IiwiY3VycmVuY3kiOiJVU0QiLCJhcHBJZCI6MTAwMjIsInVpZCI6IjEwOTgzMjQyNDU0NDQ2OTE2MzQiLCJjaGFubmVsSUQiOjYsImRldmljZUlEIjoiOTViZDYwMjRiNTk1MWQxOTIzNTBiZGU2NDhlNDlhYTYifQ==">
+        aaaaaaaaaaaaaaa</a> -->
+    <a href="./poatMessage.html" target="_blank">ppppppppppppppp</a>
+    <!-- <iframe src="https://test-gamedistribute-customer-h5.sofish.com/"
+        style="width: 100%;min-height: 100vh;border: none;"> -->
+    <script>
+        // 发送消息
+        var targetWindow = window.parent; // 或者获取目标窗口的引用
+        console.log('🚀XZG ~ targetWindow:', targetWindow);
+        var message = 'Hello, this is a message!';
+        // targetWindow.postMessage(message, 'https://pay.pawpack.sofishgame.com/index.html?encodeStr=eyJyb2xlSUQiOiIxMDk4MzI0MjQ1NDQ0NjkxNjM0Iiwicm9sZU5hbWUiOiJoZXJvMTAxMDUyMSIsInNlcnZlcklEIjo0LCJzZXJ2ZXJOYW1lIjoiNOacjSIsInJvbGVMZXZlbCI6IjQiLCJ2aXAiOiIxIiwiYXBwTGFuZyI6InpoIiwicHJvZHVjdElEIjoiMTk2IiwicHJvZHVjdE5hbWUiOiIxMjjlhYPnu4jouqvljaEiLCJwcm9kdWN0RGVzYyI6IjEyOOWFg+e7iOi6q+WNoSIsInByaWNlIjoxOTk5LCJjcE9yZGVySUQiOiI4MmM3ZmJiNDI0MTY0YjI5IiwicGF5Tm90aWZ5VXJsIjoiaHR0cHM6Ly9jcC5wYXdwYWNrLnNvZmlzaGdhbWUuY29tL3B1c2gvemR5SGFuZGxlTm90aWZ5IiwiZXh0cmEiOiI4MmM3ZmJiNDI0MTY0YjI5IiwiY3VycmVuY3kiOiJVU0QiLCJhcHBJZCI6MTAwMjIsInVpZCI6IjEwOTgzMjQyNDU0NDQ2OTE2MzQiLCJjaGFubmVsSUQiOjYsImRldmljZUlEIjoiOTViZDYwMjRiNTk1MWQxOTIzNTBiZGU2NDhlNDlhYTYifQ=='); // 目标窗口的 origin
+        targetWindow.postMessage(message, 'http://127.0.0.1:5501'); // 目标窗口的 origin
+
+    </script>
+    <!-- 在使用 iframe 嵌套页面时，可以通过以下几种方式进行 iframe 与父页面之间的通信：
+
+1. **postMessage() 方法**：这是最常用的跨文档通信方法。通过在父页面或子页面中调用 `postMessage()` 方法，可以在它们之间传递消息。例如，在父页面中可以这样发送消息：
+   
+   ```javascript
+   const iframe = document.getElementById('myIframe');
+   iframe.contentWindow.postMessage('Hello from parent!', 'https://childpage.com');
+   ```
+
+   在子页面中可以监听消息事件：
+   
+   ```javascript
+   window.addEventListener('message', event => {
+       if (event.origin === 'https://parentpage.com') {
+           console.log('Message from parent:', event.data);
+       }
+   });
+   ```
+
+2. **window.postMessage() 方法**：类似于 postMessage() 方法，但是直接在 window 对象上调用。可以在 iframe 中使用 `window.parent.postMessage()` 向父页面发送消息，或者在父页面中使用 `window.frames[0].postMessage()` 向子页面发送消息。
+
+3. **window.addEventListener() 方法**：在父页面或子页面中使用 `window.addEventListener()` 监听 `message` 事件，以便接收从另一个页面发送过来的消息。
+
+4. **window.name 属性**：可以通过设置 `window.name` 属性来在父页面和子页面之间传递数据。这种方法适用于在同一域名下的页面通信。
+
+5. **使用 URL hash**：可以通过修改 URL 的 hash 部分来传递简单的消息。父页面可以监听 `hashchange` 事件，从而获取子页面传递的消息。
+
+这些方法可以帮助实现 iframe 和父页面之间的通信，根据具体的需求和场景选择合适的通信方式。 -->
+</body>
+
+</html>

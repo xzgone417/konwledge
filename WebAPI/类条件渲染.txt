@@ -1,0 +1,6 @@
+利用WebAPI。然后在js中使用判断条件实现写入页面元素并拼接到页面上来实现条件渲染。
+可以用innerHTML或者doucument.write()。还有使用createElement创建元素再通过appendChild拼接元素
+
+都是p话，art-template模板引擎渲染页面
+{{if 条件}} ... {{/if}}
+{{if v1}} ... {{else if v2}} ... {{/if}}

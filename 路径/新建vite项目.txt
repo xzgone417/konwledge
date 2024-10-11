@@ -1,0 +1,9 @@
+ npm init vite@latest
+
+//新建vite项目
+npm create vite@latest pre-sofishgame -- --template vue-ts 
+
+//新建nuxt项目
+npx create-nuxt-app just-practice-nuxt
+
+//npm create vue@latest

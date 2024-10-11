@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    ### DOM 修改 `<div>` 的文本内容的 API：
+
+        1. **使用 `textContent` 或 `innerText` 属性**：
+        - `textContent`: 设置或返回指定节点及其所有后代的文本内容。
+        - `innerText`: 设置或返回节点及其后代的渲染文本内容。
+
+        ```javascript
+        // 使用 textContent
+        const divElement = document.getElementById('myDiv');
+        divElement.textContent = '新的文本内容';
+
+        // 或者使用 innerText
+        divElement.innerText = '新的文本内容';
+        ```
+
+        2. **使用 `innerHTML` 属性**：设置或返回 HTML 元素的内部 HTML。
+
+        ```javascript
+        const divElement = document.getElementById('myDiv');
+        divElement.innerHTML = '新的 <b>文本</b> 内容';
+        ```
+
+        3. **使用 `innerText` 与 `textContent` 的区别**：
+        - `textContent` 会获取节点及其所有后代的文本内容，而 `innerText` 则会根据 CSS 样式显示的内容进行返回，可以理解为“呈现”文本内容。
+
+        ### jQuery 的显示与隐藏属性：
+
+        在 jQuery 中，控制元素的显示与隐藏可以通过以下方法：
+
+        1. **显示元素**：
+        - 使用 `.show()` 方法显示被隐藏的元素。
+
+        ```javascript
+        $('#myDiv').show();
+        ```
+
+        2. **隐藏元素**：
+        - 使用 `.hide()` 方法隐藏元素。
+
+        ```javascript
+        $('#myDiv').hide();
+        ```
+
+        3. **切换元素的显示与隐藏**：
+        - 使用 `.toggle()` 方法可以在显示和隐藏之间切换元素的状态。
+
+        ```javascript
+        $('#myDiv').toggle();
+        ```
+
+        这些方法能够方便地通过 jQuery 操作页面元素的显示与隐藏状态。
+        <h1>
+            除了 `textContent` 和 `innerText`，HTML 中还有几种常用的属性和方法可以用来操作和增加文本：
+
+            1. **innerHTML**：
+            - `element.innerHTML` 属性允许获取或设置元素及其子元素的HTML内容。通过设置 `element.innerHTML = '新的HTML内容'` 可以直接修改元素内的HTML结构。
+
+            2. **appendChild**：
+            - `Node.appendChild()` 方法可以将一个节点添加到指定父节点的子节点列表末尾。例如：`parentElement.appendChild(newChild)` 可以将 `newChild` 添加到
+            `parentElement` 的末尾。
+
+            3. **insertAdjacentHTML**：
+            - `Element.insertAdjacentHTML()` 方法可以在指定的位置插入一段HTML内容。例如：`element.insertAdjacentHTML('beforeend', '
+            <p>新的段落</p>')` 可以在元素的末尾插入新的段落。
+
+            4. **createTextNode 和 appendChild**：
+            - `document.createTextNode()` 方法可以创建一个新的文本节点，然后使用 `appendChild` 将其添加到指定的元素中。例如：
+            ```javascript
+            var textNode = document.createTextNode('新的文本');
+            element.appendChild(textNode);
+            ```
+            这种方法适合于在现有元素中添加纯文本内容，而不是HTML结构。
+
+            这些方法和属性提供了丰富的选项来操作和增加文本内容，可以根据具体需要选择合适的方法。
+        </h1>
+</body>
+
+</html>

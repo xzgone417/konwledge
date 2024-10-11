@@ -1,0 +1,5 @@
+见收藏栏模块文件夹XMLHttpRequest介绍
+见收藏栏模块文件夹AJAX请求
+
+XMLHttpRequest是浏览器提供的一个接口，浏览器提供的XMLHttpRequest对象，是这个对象使得浏览器可以发出HTTP请求与接收HTTP响应。
+我们使用XMLHttpRequest对象来发送一个Ajax请求。

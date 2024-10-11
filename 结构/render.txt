@@ -1,0 +1,2 @@
+有template之后，render函数也就失去了他的作用。
+而如果想插入render函数，可以使用Vue.component将render函数渲染成组件直接使用

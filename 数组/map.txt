@@ -1,0 +1,14 @@
+    // //  改变url
+    //    list.itemList = zanshi.map((evevt: any) => {
+    //     let lujing: string = evevt.url;
+    //     evevt.url= new URL(lujing, import.meta.url).href;
+    //     return zanshi  //map函数必须要return值   不应该这么写.不能return数组出来。map是一个循环。如果return 数组那么每次循环出来的也是数组。
+    // 这里不应该return 数组 而是return 新的数组元素。每次return一个数组元素出来，然后空数组就能被元素填满了
+    
+    // ！！！！！！！！！！！！！！！这才是问题关键
+    // map方法应该返回一个个数组元素，然后let一个新的空数组在map方法前接受成为改变了新数组元素的值的数组
+    // });
+
+map函数默认要有返回值，而forEach则没有，因为forEach就是普通for循环
+
+map的return不会跳出循环，只是给承接的list.itemList 数组的对应循环的item进行赋值，赋的值就是当前循环序列的return 值

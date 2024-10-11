@@ -1,0 +1,12 @@
+ <!-- 路由的query参数写在nuxt-link内部定义一个参数query{name: item.name } -->
+              <nuxt-link:to="{ path: '/products', query: { name: item.name } }">{{ item.name }}</nuxt-link>
+然后跳转结果页面利用属性监听
+  watch: {
+    $route: async function (val) {
+      let result = await axiosGet("/search/resultsByKeywords", {
+        city: this.city.substr(0, this.city.length - 1) || "无锡",
+        keyword: val.query.name,
+      });
+      this.list = result.pois;
+    },
+  },

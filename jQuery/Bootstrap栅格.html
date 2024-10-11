@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <!-- <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap-theme.min.css"
+        integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous"> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.11/jquery.lazy.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+    <style>
+        .container-fluid {
+            background-color: beige;
+        }
+
+        button {
+            box-shadow: 0 0 0 2px red, 0 0 0 4px blue, 0 0 0 6px green;
+        }
+
+        .row {
+            margin-bottom: 10px;
+        }
+
+        .news {
+            /* display: flex; */
+            position: relative;
+        }
+
+        .block {
+            position: absolute;
+            width: 100px;
+            height: 30px;
+            background-color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 	超小屏幕 手机 (<768px)	小屏幕 平板 (≥768px)	中等屏幕 桌面显示器 (≥992px)	大屏幕 大桌面显示器 (≥1200px) -->
+    <!-- .col-xs-	.col-sm-	.col-md-	.col-lg- -->
+    <!-- 当container的宽度达到col的宽度时，对应flex布局才会生效,而container的宽度不等于全屏，它会随宽度留出两侧空白 -->
+    <!-- 多个col类时，前后顺序并不影响，当宽度不足时就会变竖排，如果比例不变此时只需要写最小宽度要求的即可 -->
+    <!-- Breakpoint	Class infix	Dimensions
+    Extra small	None	<576px
+    Small	sm	≥576px
+    Medium	md	≥768px
+    Large	lg	≥992px
+    Extra large	xl	≥1200px
+    Extra extra large	xxl	≥1400px -->
+    <!-- col-xs- 相当于不指定宽度，没有媒体查询得宽度显示 -->
+    <div class="container-fluid">
+        <div class="row news">
+            <div class="block"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3 col-md-4" style="background-color: rgb(255, 17, 0);">.col-md-1</div>
+                    <div class="col-sm-6 col-md-4" style="background-color: rgb(245, 221, 9);">.col-md-1</div>
+                    <div class="col-sm-3 col-md-4" style="background-color: rgb(60, 255, 0);">.col-md-1</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1" style="background-color: rgb(195, 195, 245);">111</div>
+            <div class="col-sm-1" style="background-color: rgb(190, 191, 231);">.222</div>
+            <div class="col-sm-1" style="background-color: rgb(3, 4, 82);">.333</div>
+            <div class="col-sm-1" style="background-color: rgb(190, 191, 231);">.444</div>
+            <div class="col-sm-1" style="background-color: rgb(190, 191, 231);">.555</div>
+            <div class="col-sm-1" style="background-color: rgb(190, 191, 231);">666</div>
+            <div class="col-sm-1" style="background-color: rgb(190, 191, 231);">777</div>
+            <div class="col-sm-1" style="background-color: rgb(190, 191, 231);">888</div>
+            <div class="col-sm-1" style="background-color: rgb(190, 191, 231);">999</div>
+            <div class="col-sm-1" style="background-color: rgb(10, 13, 190);">10</div>
+            <div class="col-sm-1" style="background-color: rgb(190, 191, 231);">11</div>
+            <div class="col-sm-1" style="background-color: rgb(190, 191, 231);">.12</div>
+        </div>
+        <div class="row">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3 col-md-4" style="background-color: rgb(255, 17, 0);">.col-md-1</div>
+                    <div class="col-sm-6 col-md-4" style="background-color: rgb(245, 221, 9);">.col-md-1</div>
+                    <div class="col-sm-3 col-md-4" style="background-color: rgb(60, 255, 0);">.col-md-1</div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-sm-3 col-md-4" style="background-color: rgb(255, 17, 0);">.col-md-1</div>
+            <div class="col-sm-6 col-md-4" style="background-color: rgb(245, 221, 9);">.col-md-1</div>
+            <div class="col-sm-3 col-md-4" style="background-color: rgb(60, 255, 0);">.col-md-1</div>
+        </div>
+        <div class="row">
+            <div class="dropdown">
+                <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown trigger
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dLabel">
+                    ...
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3" style="background-color: rgb(255, 17, 0);">.col-md-1</div>
+            <div class="col-sm-6" style="background-color: rgb(245, 221, 9);">.col-md-1</div>
+            <div class="col-sm-3" style="background-color: rgb(60, 255, 0);">.col-md-1</div>
+        </div>
+        <div class="row">
+            <button>11111</button>
+        </div>
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">Profile</a></li>
+            <li role="presentation"><a href="#">Messages</a></li>
+        </ul> -->
+    </div>
+
+
+</body>
+
+</html>

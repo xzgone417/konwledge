@@ -1,0 +1,30 @@
+首先一定要记得装包npm install vuex@next --save
+
+和路由一样store的写法一致，
+并且vuex的数据并不需要ref和reactive让其响应式，就像optionsAPI中vuex的数据不需要在data(){ }中声明来实现响应式
+
+但是因为没有了this，所以也不需要引入map系列函数
+首先引入一个hook即useStore
+<script setup>
+import { useStore } from "vuex";
+const { state, getters, dispatch, commit } = useStore();
+如果不做下面两列转换，就使用后一手写法%%%
+const doAdd = () => {
+  console.log("doAdd", commit);
+  commit("increment");
+};
+const doSub = () => {
+  commit("subtract", { step: 3 });
+};
+
+</script>
+在template中
+<template>
+  <div>
+    <p>count值是:{{ state.count }}</p>
+    <p>getters值是:{{ getters.optCount }}</p>
+
+    <button @click="doAdd">点我+1</button>             %%%或者<el-button @click="commit('increment')">点我+1</el-button>
+    <button @click="doSub">点我-若干</button>         %%% 亦或者  <el-button @click="commit('subtract', { step: 3 })">点我-3</el-button>
+  </div>
+</template>

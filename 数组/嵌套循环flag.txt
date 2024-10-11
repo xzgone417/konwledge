@@ -1,0 +1,15 @@
+    const arr = [0, 1, 2, 3];
+    let flag = false;
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length; j++) {
+            if (j === 1) {
+                flag = true;
+                continue;
+            }
+            console.log('i', i, 'j', j);
+        }
+        if (flag) {
+            flag = false;
+            continue;
+        }
+    }

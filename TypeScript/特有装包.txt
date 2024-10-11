@@ -1,0 +1,9 @@
+npm i lodash
+npm i -D @types/lodash    只用于开发-D      -S开发和生产
+
+-S就是–save的简写   --save
+-D就是–save-dev          --save-dev
+
+
+yarn add  lodash --save
+yarn add  @types/lodash --save-dev

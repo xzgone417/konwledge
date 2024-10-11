@@ -1,0 +1,40 @@
+1、小程序编程式导航
+wxml里面
+<view class="{{isActive?'active':''}}" bind:tap="godetail">
+  我的视图
+</view>
+js里面
+godetail() {
+    //来到detail页面  wx.navigateTo跳转页面的时候，新的页面会被压栈
+    wx.navigateTo({
+      url: '/pages/detail/detail'
+    });
+  }
+2、模板字符串
+  写在{{}}里面的内容，如果是变量则会从data中去找对应的变量
+  如果是常量则直接使用
+3、
+<!--
+  wx:key  可以管理复用元素，以提升渲染效率，一般在使用wx:for的时候，都需要添加wx:key  
+  wx:key的值需要是字符串或者是数字，其中*this表示当前item元素本身，当元素本身就是字符串或者数字的时候，就可以使用*this
+  wx:key的值需要是字符串或者是数字，如果item本身不是字符串或者数字，此时wx:key的值可以是item中的一个属性
+  注意：wx:key的值需要是兄弟元素之间唯一的       
+-->
+<!--
+    template 声明一个模板     name就是模板的名字
+    使用template声明模板的好处：管理复用的页面
+-->
+<template name="staffName">
+  <view>
+    FirstName: {{firstName}}, LastName: {{lastName}}
+  </view>
+</template>
+
+<template is="staffName" data="{{...staffA}}"></template>
+<template is="staffName" data="{{...staffB}}"></template>
+<template is="staffName" data="{{...staffC}}"></template>
+
+4、模板与组件的区别
+　template模块主要是展示，方法需要在使用template的页面中定义，对于通用的数据，最先想到或者理应是template，但是template有个缺点，那就是只是页面效果，不会有对应的js操作。
+
+　　而component组件，则拥有自己的js文件，整个component组件类似一个page页面。简单来说，只是展示用，建议使用template，组件中涉及到较多的逻辑，建议使用component。

@@ -1,0 +1,2 @@
+navigate和push
+如果已经在A页面。再用navigate跳转无任何变化。而用push会创建新的A页面

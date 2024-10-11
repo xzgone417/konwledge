@@ -1,0 +1,5 @@
+       4、  //查看数组中是否包含指定元素
+ {
+        console.log([1, 2, 3].includes(11));
+        console.log([1, 2, 3, NaN].includes(NaN));
+}

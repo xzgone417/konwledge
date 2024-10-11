@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+    />
+    <title>Document</title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .container {
+        /* 容器原始位置向上移动100px,隐藏掉loading盒子,下拉时才显示出来 */
+        position: relative;
+        top: -100px;
+      }
+
+      .container .loading {
+        text-align: center;
+        height: 100px;
+        line-height: 100px;
+      }
+
+      .container .list {
+        border: 1px solid #666;
+      }
+
+      .container .list li {
+        line-height: 80px;
+      }
+
+      .container .list li:nth-child(2n) {
+        background-color: #ccc;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="container">
+      <section class="loading">
+        <span>下拉刷新</span>
+      </section>
+      <section class="list">
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+      </section>
+    </section>
+  </body>
+  <script type="text/javascript">
+    // 滚动容器
+    const container = document.querySelector(".container");
+    // loading文字容器
+    const span = container.querySelector("span");
+    let startPosition = 0; // 下拉的开始位置
+    let distance = 0; // 下拉距离的差值
+    // 手指按下时
+    container.addEventListener("touchstart", function (e) {
+      // 在回弹后的下一次下拉按下时重置loading文本
+      span.textContent = "下拉刷新";
+      // 记录开始位置
+      startPosition = e.touches[0].pageY;
+    });
+    // 手指移动时
+    container.addEventListener("touchmove", function (e) {
+      // 计算下拉差值
+      const currentPosition = e.touches[0].pageY;
+      // 计算下拉后离开始位置的差值
+      distance = currentPosition - startPosition;
+      // 如果下拉差值达到,则提示可以松手了 这个达到的具体值这里是取的下拉出来的区域高度
+      if (distance > 100) {
+        // 案例以100为临界值,超过了100的距离就提示释放刷新
+        span.textContent = "释放刷新";
+      }
+      // 限制下滑的最大值为120,超过就不再下滑
+      if (distance < 120) {
+        // 容器的这个下滑是瞬时的 取消过渡效果
+        this.style.transition = "transform 0s";
+        this.style.transform = `translateY(${distance}px)`;
+      }
+    });
+    // 手指松开时
+    container.addEventListener("touchend", function (e) {
+      // 回弹的动作可以给个1s的过渡效果
+      this.style.transition = "transform 1s";
+      // 如果下拉差值并没有达到 则直接回弹
+      if (distance > 0 && distance < 100) {
+        this.style.transform = `translateY(0px)`;
+        return;
+      }
+      if (distance > 100) {
+        // 下拉差值达到了就显示刷新中,并暂时定格在这个位置
+        this.style.transform = `translateY(100px)`;
+        span.textContent = "刷新中";
+        // 等数据回来后显示刷新成功1s然后再回弹 到这里本次整个下拉执行完毕
+        setTimeout(() => {
+          // setTimeout模拟异步请求 真实开发这里是一个promise请求
+          span.textContent = "刷新成功";
+          // 这个setTimeout让刷新成功显示一秒后再回弹
+          setTimeout(() => {
+            this.style.transform = `translateY(0px)`;
+          }, 1000);
+        }, 2000);
+      }
+      // 一次下拉结束后重置差值
+      distance = 0;
+    });
+  </script>
+</html>

@@ -1,0 +1,12 @@
+serve：80   默认端口号
+页面文件
+location / {
+            root   html;
+            index  index.html index.htm;
+        }
+请求访问反向代理
+location /api {
+            root   html;
+            index  index.html index.htm;
+            proxy_pass   http://localhost:8888;
+        }

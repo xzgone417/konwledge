@@ -1,0 +1,22 @@
+  //setTimeout   只会执行一次     clearTimeout()
+      //setInterval  重复执行         clearInterval()
+
+如果要清除就在定时器内部最下层清除定时器，这样执行完一次就清除了，不止执行一次也可以加上条件判断
+ var timer = setTimeout(function(){
+        console.log("你好")
+        //清除定时器
+        clearTimeout(timer)；
+        timer=null
+      },3000)
+
+也可以把清除定时器写在外部，但是定时器必须要赋值给一个变量，例如timer。然后在外部利用变量名清除定时器
+而如果用setInterval来执行，务必写在定时器内部加上条件判断，或者函数的外边加上条件判断，保证其循环又能清除
+  btn2.onclick = function(){
+        clearInterval(timer);
+          timer=null
+//如果timer是一个定时器，直接将他log（打印）出来是一个数组编号，
+//它被clearTimeout后再打印也是会显示一个编号，typeof（timer）会显示他是"number"
+//只清空定时器timer依然会占用内存。而只设为null。定时器依然会执行，但返回值转为为null罢了
+
+//所以清空定时器和把清空后的定时器设为null应该一起执行
+      }

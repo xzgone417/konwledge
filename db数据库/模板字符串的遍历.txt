@@ -1,0 +1,17 @@
+模板字符串的遍历
+products{
+name:xzh
+}
+{{each products}}
+
+{{$value.name}}
+
+{{/each}}
+或者
+     <div id="tap2">
+      {{each type value i}}
+                <span>
+                    <a href="?bzlist={{type[i].href}}">{{type[i].name}}</a>
+                </span>
+                {{/each}}
+            </div>

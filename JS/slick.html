@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Add the slick-theme.css if you want default styling -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> -->
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <style>
+        .list li {
+            margin: 10px;
+            background-color: azure;
+        }
+
+        .img-box {
+            background-color: aqua;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="list">
+        <ul class="time">
+            <li class="line">2003</li>
+            <li class="line">2001</li>
+            <li class="line">1998</li>
+        </ul>
+        <div class="small"></div>
+    </div>
+
+    <div class="box">
+        <ol>
+            <li>
+                <div class="grid">
+                    <div class="left">
+                        <span>1998 year</span>
+                        <h4>第一个幻灯片</h4>
+                        <div class="con">
+                            1998 ind
+                        </div>
+                        <div class="more">
+                            <a class="prev">previous</a>
+                            <a class="next">next 2000</a>
+                        </div>
+
+                    </div>
+                    <div class="right">
+                        <div class="img-box">
+                            1
+                        </div>
+                    </div>
+
+                </div>
+
+            </li>
+            <li>
+                <div class="grid">
+                    <div class="left">
+                        <span>2001 year</span>
+                        <h4>第一个幻灯片</h4>
+                        <div class="con">
+                            this is 2001
+                        </div>
+                        <div class="more">
+                            <a class="prev">previous</a>
+                            <a class="next">next 2000</a>
+                        </div>
+
+                    </div>
+                    <div class="right">
+                        <div class="img-box">
+                            2
+                        </div>
+                    </div>
+
+                </div>
+            </li>
+            <li>
+                <div class="grid">
+                    <div class="left">
+                        <span>2003 year</span>
+                        <h4>第一个幻灯片</h4>
+                        <div class="con">
+                            this is 2003
+                        </div>
+                        <div class="more">
+                            <a class="prev">previous</a>
+                            <a class="next">next 2000</a>
+                        </div>
+
+                    </div>
+                    <div class="right">
+                        <div class="img-box">
+                            3
+                        </div>
+                    </div>
+
+                </div>
+            </li>
+
+
+        </ol>
+    </div>
+
+    <!-- JS: -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+        // $('.box ol').slick({
+        //     autoplay: true,
+        //     pauseOnHover: false,
+        //     speed: 1500,
+        //     autoplaySpeed: 5000,
+        //     slidesToShow: 1,
+        //     swipeToSlide: true,
+        //     touchThreshold: 100,
+        //     centerMode: true,
+        //     centerPadding: '0',
+        //     prevArrow: $('.box .left .more a.prev'),
+        //     nextArrow: $('.box .left .more a.next'),
+        // });
+
+        // $('.list .time').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        //     var i = (nextSlide ? nextSlide : 0) + 1;
+        //     $(".list .small").text(i + '/' + slick.slideCount);
+        //     $('.box ol').slick('slickGoTo', nextSlide);
+        // });
+        // $(".list ul li").click(function () {
+        //     $('.box ol').slick('slickGoTo', $(this).index());
+        //     $(this).addClass('active').siblings().removeClass('active');
+        // });
+
+    </script>
+
+
+</body>
+
+</html>

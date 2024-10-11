@@ -1,0 +1,24 @@
+store下模块vuex文件写法还是一致的，不要忘了命名空间    namespaced: true,
+包括store/index.js引入模块的写法也无二样
+
+但是在页面中使用不用像index.js那样直接使用state或者getters什么的。
+而是使用state点模块名点对象名的形式。state写在最前面声明引入何种玩意
+ <div>{{ state.cityModule.city }}</div>
+  <el-button @click="commit('cityModule/changeCity','上海')">点我修改城市</el-button>
+
+当然js中的固定三件套不能忘。
+<script>
+第一件套引入      import { useStore } from "vuex";
+export default {
+  setup() {
+第二件套定义    const { state, getters, dispatch, commit } = useStore();
+
+第二件套导出     return {
+                                 state,
+                                getters,
+                                dispatch,          //action方法在页面引用时的运用函数
+                                commit           //mutations方法在页面引用时的运用函数
+                                   }
+  }
+}
+</script>

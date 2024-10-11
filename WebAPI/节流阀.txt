@@ -1,0 +1,13 @@
+//节流阀  ，除第一次赋值外定时器执行完后才会把flag修改为true，只有为true才能往下执行。
+而再往下就是定时器了，所以flag条件判断将其阻止在这。当然也可以用条件判断把下面代码包住是否执行下列代码而不用return。
+只要通过条件判断将代码执行阻止就能称为节流阀了
+          var flag = true;
+   document.onkeydown = function (e) {
+            //通过节流阀避免按键过快导致的头撞身躯的情况
+            if(!flag) return;
+            flag = false;
+            var t = setTimeout(function(){
+              flag = true;
+              clearTimeout(t);
+            },200)
+}

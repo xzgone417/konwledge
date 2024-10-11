@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function get1(...arr) {
+            console.log(arr); 	// 使用时不需要写...
+        }
+        get1(2, 3)
+
+        // 用户最少传3个参数
+        function get2(a, b, c, ...arr) {
+            console.log(arr,"x2");
+        }
+        // 默认参数arguments 作为伪数组
+        function get3() {
+            console.log(arguments);
+        }
+        get2(1, 2, 3, 4)
+        get3(1, 2, 3, 4, 5)
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    l1
+    <a href="./local2.html" target="_blank">to222222222222</a>
+    <div class="ytr"></div>
+    <button onclick="lo1_op()">1111111111</button>
+    <button onclick="bbbb()">ono ooooooo</button>
+    <button onclick="share()">sssssssssssss</button>
+    <script>
+        // localStorage可以用于统一域名下打开新标签页的html文件通信，sessionStorage不行
+        // sessionStorage.setItem("lo1", "local1")
+        // var yet = sessionStorage.getItem("lo2")
+        // if (yet) {
+        //     document.getElementsByClassName("ytr")[0].innerHTML = yet
+        // }
+        function lo1_op() {
+            localStorage.setItem("lo1", "local1")
+        }
+        function bbbb(params) {
+            const channel = new BroadcastChannel('channelName');
+            // 发送消息
+            channel.postMessage('Hello from one tab!');
+        }
+        function share(params) {
+            // 在一个标签页中创建 SharedWorker
+            const worker = new SharedWorker('worker.js');
+            // 向 SharedWorker 发送消息
+            worker.port.postMessage('Hello from one share!');
+
+            // 在另一个标签页中监听 SharedWorker 的消息
+            worker.port.onmessage = function (event) {
+                console.log('Received:', event.data);
+            };
+        }
+
+    </script>
+</body>
+
+</html>

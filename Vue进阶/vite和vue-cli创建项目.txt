@@ -1,0 +1,17 @@
+vue-cli创建命令
+vue create project-name
+cd 项目
+// npm install
+npm run serve
+
+vite创建命令
+npm init @vitejs/app
+cd 项目
+npm install
+npm run dev
+
+
+yarn create @vitejs/app
+cd 项目
+yarn
+yarn dev

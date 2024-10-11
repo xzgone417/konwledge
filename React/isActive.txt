@@ -1,0 +1,2 @@
+    {/*isActive判断跳转状态前后的状态，已经跳转那就是isActive  */}
+                <NavLink to="/home" style={({ isActive }) => isActive ? { color: 'red' } : {}}>跳转首页</NavLink>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    loo2
+    <a href="./local2.html" target="_blank">to111111111111</a>
+    <div class="ytr"></div>
+    <script>
+        window.addEventListener('storage', function (event) {
+            console.log(event);
+            if (event.key === 'lo1') {
+                var yet = localStorage.getItem("lo1")
+                if (yet) {
+                    document.getElementsByClassName("ytr")[0].innerHTML = yet
+                }
+            }
+        });
+        // 创建一个 BroadcastChannel,必须得已存在的标签页才能监听到BroadcastChannel
+        const channel = new BroadcastChannel('channelName');
+        // 发送消息
+        // 在另一个标签页中监听消息
+        channel.onmessage = function (event) {
+            console.log('Received:', event.data);
+        };
+        // sessionStorage.setItem("lo2", "local22222222222222")
+        // var yet = sessionStorage.getItem("lo1")
+        // if (yet) {
+        //     document.getElementsByClassName("ytr")[0].innerHTML = yet
+        // }
+        // SharedWorker 是一个可以被多个浏览上下文（标签页、窗口等）共享的后台线程，可以用来处理与多个标签页之间的共享状态和通信。
+        // 可以通过 SharedWorker 实例来创建一个中心化的通信点，从而实现不同标签页之间的通信。
+        const worker = new SharedWorker('worker.js');
+        // 向 SharedWorker 发送消息
+        // 在另一个标签页中监听 SharedWorker 的消息
+        worker.port.onmessage = function (event) {
+            console.log('Received:', event.data);
+        };
+        console.log(document.referrer,"XXXXXXXXXXXXXXXXXXXXXXXXXX");
+    </script>
+</body>
+
+</html>

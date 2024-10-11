@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 在JavaScript中，fetch是一种用于发起网络请求的现代API，而XHR（XMLHttpRequest）是传统的用于发起网络请求的方法。以下是关于fetch的使用，fetch与XHR的区别，以及如何解决跨域问题的一些信息：
+
+    使用fetch
+    fetch是一个基于Promise的现代API，用于发起网络请求。它提供了一种更简洁、更强大的方式来处理网络请求和响应。 -->
+    <script>
+        fetch('https://api.example.com/data')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+            });
+        fetch(url, {
+            method: 'GET', // 请求方法，可以是 GET、POST 等
+            headers: {
+                'Content-Type': 'application/json' // 请求头部信息，例如 Content-Type
+                // 其他自定义的头部信息也可以在这里添加
+            },
+            body: JSON.stringify(data), // 请求的 body 数据，通常用于 POST 请求
+            credentials: 'include' // 控制是否发送站点的 cookies，可选值有 'omit'、'same-origin'、'include'
+        })
+            .then(response => {
+                // 处理响应
+            })
+            .catch(error => {
+                // 处理错误
+            });
+
+    </script>
+
+    <!-- fetch与XHR的区别
+语法：fetch使用Promise，使得代码更具可读性和易于处理异步操作。
+Response对象：fetch返回的是一个Response对象，需要手动处理状态码等信息。
+跨域请求：fetch默认不会发送站点的cookies，需要手动设置credentials选项为'include'来发送cookies。
+跨域问题解决方法
+跨域请求是指从一个域名的网页去请求另一个域名的资源，这是由浏览器的同源策略所限制的。解决跨域问题的方法包括：
+
+CORS（跨域资源共享）：服务端设置响应头，允许特定源访问资源。
+JSONP：利用<script>标签不受同源策略限制的特性，通过动态创建<script>标签实现跨域请求。
+代理：在服务端设置代理，由服务端转发请求，避免浏览器的同源策略。
+WebSocket：使用WebSocket协议进行跨域通信。
+CORS Anywhere：使用第三方服务如CORS Anywhere来代理请求，绕过同源策略。
+这些方法中，CORS是最常用也是官方推荐的跨域解决 -->
+    <script>
+        // 封装一个 Fetch API 请求和响应拦截器的函数
+        function fetchWithInterceptors(url, options) {
+            // 请求拦截器
+            const requestInterceptor = {
+                async request(url, options) {
+                    // 在发送请求前进行一些操作，比如添加认证信息、日志记录等
+                    console.log('Request Interceptor - Before Request:', { url, options });
+
+                    // 可以在这里修改请求选项或者直接返回
+                    return { url, options };
+                },
+                async requestError(error) {
+                    // 处理请求错误
+                    console.error('Request Interceptor - Request Error:', error);
+                    throw error;
+                }
+            };
+
+            // 响应拦截器
+            const responseInterceptor = {
+                async response(response) {
+                    // 在接收响应后进行一些操作，比如处理响应数据、日志记录等
+                    console.log('Response Interceptor - Response Received:', response);
+
+                    // 可以在这里修改响应对象或者直接返回
+                    return response;
+                },
+                async responseError(error) {
+                    // 处理响应错误
+                    console.error('Response Interceptor - Response Error:', error);
+                    throw error;
+                }
+            };
+
+            // 发送请求的主要逻辑
+            async function fetchWrapper(url, options) {
+                try {
+                    // 执行请求拦截器的 request 方法
+                    const modifiedRequest = await requestInterceptor.request(url, options);
+
+                    // 发送请求
+                    const response = await fetch(modifiedRequest.url, modifiedRequest.options);
+
+                    // 执行响应拦截器的 response 方法
+                    const modifiedResponse = await responseInterceptor.response(response);
+
+                    return modifiedResponse;
+                } catch (error) {
+                    // 如果出现错误，则执行对应的拦截器的错误处理方法
+                    if (error instanceof TypeError) {
+                        await requestInterceptor.requestError(error);
+                    } else {
+                        await responseInterceptor.responseError(error);
+                    }
+                    throw error;
+                }
+            }
+
+            // 返回封装后的 fetch 函数
+            return fetchWrapper(url, options);
+        }
+
+        // 使用封装后的 fetch 函数
+        fetchWithInterceptors('https://api.example.com/data')
+            .then(response => response.json())
+            .then(data => console.log('Data received:', data))
+            .catch(error => console.error('Error:', error));
+
+    </script>
+    <!-- 封装函数 fetchWithInterceptors：
+
+    fetchWithInterceptors 函数接受 url 和 options 作为参数，这些参数将用于调用 fetch 函数。
+    它包含两个拦截器对象：requestInterceptor 和 responseInterceptor。这些对象分别定义了请求和响应的拦截逻辑。
+    请求拦截器 requestInterceptor：
+
+    requestInterceptor 包含两个方法：request 和 requestError。
+    request 方法用于在发送请求之前对 url 和 options 进行操作，比如添加认证信息、修改请求头等。
+    requestError 方法用于处理在请求过程中的任何错误。
+    响应拦截器 responseInterceptor：
+
+    responseInterceptor 同样包含两个方法：response 和 responseError。
+    response 方法用于在接收到响应后对响应对象进行操作，比如处理响应数据、记录日志等。
+    responseError 方法用于处理接收到的响应中可能出现的错误。
+    fetchWrapper 函数：
+
+    fetchWrapper 函数是实际执行请求的地方。
+    它先调用请求拦截器的 request 方法来修改请求的 url 和 options。
+    然后使用修改后的 url 和 options 调用原生的 fetch 函数。
+    当响应返回后，再调用响应拦截器的 response 方法来处理响应。
+    如果在发送请求或处理响应过程中出现错误，会调用对应的拦截器的错误处理方法。
+    使用封装后的 fetch 函数：
+
+    最后的示例展示了如何使用封装后的 fetchWithInterceptors 函数来发送请求，并处理响应数据和错误。
+    这种方式可以让你更灵活地管理和控制所有的网络请求和响应，可以根据需要添加更多的拦截器逻辑，比如缓存管理、异常处理等。
+    如果服务器返回了JSON格式的数据，你可以通过调用response.json()方法来解析这些数据。这个方法会返回一个Promise，
+    其解析结果就是服务器返回的JSON数据对应的JavaScript对象。 这样你就可以在JavaScript中方便地处理和操作这些数据了。
+    -->
+</body>
+
+</html>

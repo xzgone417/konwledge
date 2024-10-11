@@ -1,0 +1,5 @@
+数组：
+for in 返回index        for on返回item
+
+对象
+只有for in   返回key  ，然后根据key从对象拿value ；object[key]

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    postMessage
+    <script>    // 接收消息
+        window.addEventListener('message', function (event) {
+            console.log('🚀XZG ~ event:', event);
+            if (event.origin === 'http://127.0.0.1:5501') { // 发送消息的页面的 origin
+                console.log('Received message: ' + event.data);
+            }
+        });</script>
+
+</body>
+
+</html>

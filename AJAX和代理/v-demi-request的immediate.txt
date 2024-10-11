@@ -1,0 +1,74 @@
+v-demi-request 的 useVDR 钩子提供了一个 immediate 配置选项，用于控制是否在组件挂载时立即触发请求。
+
+该选项的默认值为 true，即在组件挂载时自动触发第一次请求。如果将该选项设置为 false，则需要手动调用 request 函数才能触发请求。以下是 useVDR 钩子的完整配置对象，包括了 immediate 选项：
+
+js
+{
+  // 延迟时间（单位：毫秒），表示从最后一次触发到真正执行请求的时间间隔。默认为 200ms。
+  delay: 200,
+  // 观察的依赖项数组，表示当其中任何一项变化时，重新触发请求。默认为空数组。
+  requiredDeps: [],
+  // 是否手动触发请求，如果设置为 true，则不会在组件挂载时自动触发第一次请求，需要手动调用 request 函数才能触发请求。默认为 false。
+  manualTrigger: false,
+  // 控制是否在请求时显示全局 loading，默认为 false。
+  globalLoading: false,
+  // 全局 loading 样式，可选，值为一个字符串或者一个 VNode 对象，默认为一个简单的加载动画。
+  loadingComponent: null,
+  // 全局 loading 样式类名，可选，默认为 "vdr-global-loading"。
+  loadingClass: 'vdr-global-loading',
+  // 是否显示错误提示，默认为 true。
+  showError: true,
+  // 等待时间（单位：毫秒），如果请求时间超过该时间，则视为超时，会触发 onTimeout 回调函数。默认为 null，表示不设置超时时间。
+  timeout: null,
+  // 超时处理函数，如果请求超时，则会调用该函数进行处理。默认为一个空函数。
+  onTimeout: () => {},
+  // 是否在组件挂载时自动触发第一次请求。如果设置为 true，则会在组件挂载时自动触发第一次请求，无需手动调用 request 函数。默认为 true。
+  immediate: true,
+}
+例如，在以下代码中，useVDR 钩子被配置为在组件挂载时自动触发第一次请求：
+
+js
+import { useVDR } from 'v-demi-request';
+
+export default {
+  setup() {
+    const { data, isLoading } = useVDR(fetchData);
+
+    return {
+      data,
+      isLoading,
+    };
+  },
+};
+
+function fetchData() {
+  // 请求数据的逻辑，返回 Promise 对象。
+}
+如果想要将 immediate 选项设置为 false，需要将它包含在配置对象中并设置为 false：
+
+js
+import { useVDR } from 'v-demi-request';
+
+export default {
+  setup() {
+    const { data, isLoading, request } = useVDR(fetchData, {
+      immediate: false,
+    });
+
+    // 手动触发请求
+    const loadData = () => {
+      request();
+    };
+
+    return {
+      data,
+      isLoading,
+      loadData,
+    };
+  },
+};
+
+function fetchData() {
+  // 请求数据的逻辑，返回 Promise 对象。
+}
+以上代码中，在 useVDR 钩子的第二个参数中将 immediate 选项设置为 false，同时手动创建了一个 loadData 函数用于手动触发请求。

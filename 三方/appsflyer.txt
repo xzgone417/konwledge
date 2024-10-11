@@ -1,0 +1,17 @@
+目前的h5如果是如果APP是使用UNIAPP的架构，内核是H5的话属于Hybrid App，可以直接参考下方文档。
+Hybrid App的追踪：安装归因能正常归因，用户应用内事件也能追踪。
+1、AF的SDK 正常按照《对接文档》指南接入即可。
+2、应用内事件的配置，需要参考这个文档：https://support.appsflyer.com/hc/en-us/articles/207031976-In-app-events-for-hybrid-apps#introduction
+
+如果是纯h5（web端）的话，只能用web sdk，但是这个功能比较基础，并且数据和mobile是不互通的
+
+需要在网页端集成web sdk，结合PBA面板查看数据，和移动端是分开的哈。PBA面板整体设置流程
+1.需要先创建一个web app以及相关联的bundle id 也就是web网页域名。具体步骤参考这里：https://support.appsflyer.com/hc/en-us/articles/360000646498-PBA-brand-bundles-and-settings
+2.可以集成web sdk记录事件或者是S2S上报web端事件
+SDK集成：https://support.appsflyer.com/hc/en-us/articles/360001610038-PBA-Web-SDK-integration-guide
+Web端s2s报事件：https://support.appsflyer.com/hc/en-us/articles/360006997298-Web-Server-to-server-events-API-for-PBA-Web-S2S-
+3.在面板标记转化事件（计入套餐消耗），设置哪些域名不参与归因，比如自己官网到的网页等
+4.测试相关的web 网页事件及查看面板数据验证测试结果
+
+
+另外需要注意下web端归因颗粒度及数据延迟都和移动端不同，是UTC daily更新的（不支持实时），且原始数据需要在s3 bucket里获取哈：https://support.appsflyer.com/hc/en-us/articles/360001917778-Raw-data-reports-for-PBA#setting-up-pba-reports-in-data-locker

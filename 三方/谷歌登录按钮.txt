@@ -1,0 +1,71 @@
+    // if (bindType === 1) {
+    //   isBindAccount = false;
+    //   showGoogleBind = true;
+    //   googleStatus = 1;
+    //   let timer = setTimeout(() => {
+    //     if (theGoogleBind) {
+    //       google.accounts.id.renderButton(theGoogleBind, {
+    //         type: "standard",
+    //         theme: "outline",
+    //         size: "large",
+    //         text: "signin_with",
+    //         shape: "rectangular",
+    //       });
+    //     } else {
+    //       tick().then(() => {
+    //         if (theGoogleBind) {
+    //           google.accounts.id.renderButton(theGoogleBind, {
+    //             type: "standard",
+    //             theme: "outline",
+    //             size: "large",
+    //             text: "signin_with",
+    //             shape: "rectangular",
+    //             // click_listener: () => {},
+    //           });
+    //         }
+    //       });
+    //     }
+    //     clearTimeout(timer);
+    //   }, 100);
+    // } else {
+    //   googleUserInfo = userDetail.find((item: any) => item.accountType === 3);
+    //   isBindAccount = false;
+    //   showUnbindGoogle = true;
+    //   googleStatus = 2;
+    //   let timer = setTimeout(() => {
+    //     if (theGoogleUnbind) {
+    //       google.accounts.id.renderButton(theGoogleUnbind, {
+    //         type: "standard",
+    //         theme: "outline",
+    //         size: "large",
+    //         text: "signin_with",
+    //         shape: "rectangular",
+    //       });
+    //     } else {
+    //       tick().then(() => {
+    //         if (theGoogleUnbind) {
+    //           google.accounts.id.renderButton(theGoogleUnbind, {
+    //             type: "standard",
+    //             theme: "outline",
+    //             size: "large",
+    //             text: "signin_with",
+    //             shape: "rectangular",
+    //           });
+    //         }
+    //       });
+    //     }
+    //     clearTimeout(timer);
+    //   }, 100);
+    // }
+
+//
+        // google.accounts.id.initialize({
+        //   client_id: sdkInitConfig.googleClientId,
+        //   callback: handleCredentialResponse,
+        //   native_callback: (res: any) => {
+        //     console.log(res);
+        //   },
+        //   use_fedcm_for_prompt: true,
+        //   // login_uri: "https://test-gamedistribute-customer-h5.sofish.com/",
+        // });
+        // google.accounts.id.prompt();

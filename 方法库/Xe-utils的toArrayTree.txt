@@ -1,0 +1,5 @@
+xe-utils的toArrayTree
+根据对象属性键值来的，有key这个公共键值，和基于key的parentKey，
+parentKey即该对象的拥有父节点，父节点的键值key等于parentKey。
+xe-utils的toTreeArray
+根据节点key和tree的形状自动生成parentKey，

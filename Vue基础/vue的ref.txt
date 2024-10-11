@@ -1,0 +1,1 @@
+vue的ref得到的是一个对象`this.refs.textInput`。

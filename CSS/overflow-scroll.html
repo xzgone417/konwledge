@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 自定义滚动条 */
+    ::-webkit-scrollbar {
+        width: 10px;
+        /* 滚动条宽度 */
+    }
+
+    /* 滚动槽部分 */
+    ::-webkit-scrollbar-track {
+        background: #edf8d3;
+        /* 滚动槽背景色 */
+    }
+
+    /* 滚动条滑块部分 */
+    ::-webkit-scrollbar-thumb {
+        background: #eb0b0b;
+        /* 滚动条滑块颜色 */
+    }
+
+    /* 滚动条滑块悬停状态 */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #0af028;
+        /* 悬停时的颜色 */
+    }
+
+    h2 {
+        /* width: 10px; */
+        height: 1000px;
+        background-color: #0ac442;
+    }
+
+    /* 示例：修改overflow-y: scroll;的滚动槽 */
+    .custom-scroll {
+        width: 200px;
+        height: 200px;
+        /* 设置滚动容器的高度 */
+        overflow-y: scroll;
+        overflow-x: scroll;
+        /* 垂直滚动 加了thin就无法自定义了*/
+        /* scrollbar-width: thin; */
+        /* 滚动条宽度 */
+    }
+
+    /* 自定义滚动条样式 */
+    .custom-scroll::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        /* 滚动条宽度 */
+    }
+
+    .custom-scroll::-webkit-scrollbar-track {
+        background: #63cbeb;
+        /* 滚动槽背景色 */
+    }
+
+    .custom-scroll::-webkit-scrollbar-thumb {
+        background: #f11a1a;
+        /* 滚动条滑块颜色 */
+    }
+
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+        background: #0ac442;
+        /* 悬停时的颜色 */
+    }
+</style>
+
+<body>
+    <h1 class="custom-scroll">
+        AAAAAA
+        BBBBBBBBBBB
+        CCCCCCCCCCCCC
+        CCCCCCCCCCC
+        VVVVVVVVVVVV
+        VVVVVVVVVVVVV
+        BBBBBBBBBBBB
+        BBBBBBBBBBBBB
+        NNNNNNNNNNNNNNNNN
+    </h1>
+    <h2>
+        ------
+        `overflow-y` 是 CSS 中用来控制元素在垂直方向上溢出时的处理方式的属性。它有几种可能的取值，每种取值都影响溢出内容的显示和滚动行为。以下是 `overflow-y` 属性的各种取值及其意义：
+
+        1. **visible**：
+        - **意义**：默认值。溢出内容会呈现在元素框外面，可能会覆盖其他元素。
+        - **滚动条**：不会显示滚动条，溢出内容直接展示。
+
+        2. **hidden**：
+        - **意义**：溢出的内容会被裁剪，不显示在元素框外面。
+        - **滚动条**：不会显示滚动条，溢出内容直接被隐藏。
+
+        3. **scroll**：
+        - **意义**：溢出内容会被裁剪，但是会显示滚动条让用户可以查看溢出内容。
+        - **滚动条**：无论内容是否溢出，始终显示滚动条。
+
+        4. **auto**：
+        - **意义**：类似于 `scroll`，溢出内容被裁剪，但只在必要时显示滚动条。
+        - **滚动条**：只有在内容溢出时才显示滚动条。
+
+        5. **inherit**：
+        - **意义**：继承父元素的 `overflow-y` 值。
+
+        这些取值允许开发者根据设计需求和用户体验优化选择不同的溢出处理方式。通过合适的 `overflow-y` 设置，可以确保页面在内容溢出时的显示和滚动行为符合设计和用户期望。</h2>
+    区别：auto 和 scroll
+    auto：
+
+    当设置为 auto 时，浏览器会根据内容是否溢出自动决定是否显示滚动条。如果内容不溢出，则不显示滚动条；如果内容溢出，则显示滚动条以便用户可以滚动查看剩余内容。
+    这种设置通常用于希望在需要时显示滚动条，而不会影响布局的情况下。
+    scroll：
+
+    当设置为 scroll 时，滚动条始终显示，无论内容是否溢出。如果内容溢出，则滚动条可用并允许用户滚动查看剩余内容；如果内容未溢出，则滚动条会显示但不可用（灰色）。
+    这种设置通常用于确保内容始终可以被滚动查看，即使内容未溢出时也可用，用户可以预见到有滚动条的情况。
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+    />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .container {
+        height: 100vh;
+        overflow-y: scroll;
+      }
+
+      .container .list {
+        border: 1px solid #666;
+      }
+
+      .container .list li {
+        line-height: 80px;
+      }
+
+      .container .list li:nth-child(2n) {
+        background-color: #ccc;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="container">
+      <section class="list">
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+        <li>我是内容</li>
+      </section>
+    </section>
+  </body>
+  <script type="text/javascript" defer="defer">
+    // 滚动容器
+    const container = document.querySelector(".container");
+    // 监听滚动事件
+    container.addEventListener(
+      "scroll",
+      _.debounce(function (e) {
+        // 当元素的可视高度+滚入的距离>=元素真实高度-触底距离时,触发加载更多
+        if (this.clientHeight + this.scrollTop >= this.scrollHeight - 50) {
+          setTimeout(() => {
+            // 这里是一个异步加载数据的操作
+            console.log("加载更多");
+          }, 1000);
+        }
+      }, 700)
+    );
+  </script>
+</html>

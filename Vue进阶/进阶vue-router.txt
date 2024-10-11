@@ -1,0 +1,12 @@
+第一步记得装包npm install vue-router@4
+
+路由文件router/index.js文件里写法两种API几乎一致
+
+而在页面中引用时：
+因为componsitionAPI中没有this，在OptionsAPI中this.$route.params.id直接可以获得路由参数:id，页面上用{{$route.params.id}}
+编程式导航用 this.$router.push("/home");
+
+而在componsitionAPI，当然template上也可以用{{$route.params.id}}拿到，但是在script中使用需要先引入一个hook即useRoute
+import { useRoute } from "vue-router";
+然后 const route = useRoute();再就可以用route.params.id来代替this.$route.params.id
+编程式导航同理用 router.push("/home");

@@ -1,0 +1,17 @@
+import React, { useEffect } from 'react';
+
+function MyComponent() {
+useEffect(() => {
+const myDiv = document.getElementById('myDiv');
+if (myDiv) {
+const slidesToShow = myDiv.dataset.slidesToShow;
+console.log(slidesToShow); // 输出: "3"
+}
+}, []);
+
+return (
+<div id="myDiv" data-slidesToShow="3">...</div>
+);
+}
+
+export default MyComponent;

@@ -1,0 +1,29 @@
+params
+{
+    path: '/about/:id',
+    name: 'About',
+    component: About,
+    props:true
+  }
+<script setup>
+const props = defineProps({
+  id: Number
+})
+console.log(props.id)
+</script>
+
+
+query
+ {
+    path: '/home',
+    name: 'Home',
+    component: Home,
+    props:route => ({ q: route.query.q, m: route.query.m }),//query传参
+  },
+<script setup>
+const props = defineProps({
+  q: String,
+  m: String
+})
+console.log(props.q,props.m)
+</script>

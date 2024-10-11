@@ -1,0 +1,1 @@
+uni-app的methods是一个属性，列如 this.$refs.message.open()这种，而event才是@click这种

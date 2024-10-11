@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .texts {
+            width: 100px;
+            height: 100px;
+            background-color: aliceblue;
+        }
+
+        @media (min-width: 500px) and (max-width: 600px) {
+            .texts {
+                background-color: aquamarine;
+            }
+        }
+
+        /* 只要不交叉,and 就会两者互相安好 */
+        /* @media (min-width: 600px) and (max-width: 900px) {
+            .texts {
+                background-color: rgb(140, 127, 255);
+            }
+        } */
+
+        /* 交叉部分取下方 */
+        @media (min-width: 400px) and (max-width: 550px) {
+            .texts {
+                background-color: rgb(127, 225, 255);
+            }
+        }
+
+        /* 媒体查询相当于多一个查询条件,只要满足条件就会自动覆盖上方 */
+        /* @media (min-width: 700px) {
+            .texts {
+                background-color: rgb(136, 31, 17);
+            }
+        } */
+
+        /* 无媒体查询样式会全覆盖 */
+        /* .texts {
+            background-color: rgb(31, 240, 66);
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="texts">
+        totest
+    </div>
+</body>
+
+</html>

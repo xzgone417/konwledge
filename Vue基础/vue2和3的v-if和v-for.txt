@@ -1,0 +1,2 @@
+vue3的v-if优先级更高，v-if访问不到item
+而vue2的v-for优先起作用，然后再是v-if

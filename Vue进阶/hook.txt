@@ -1,0 +1,18 @@
+建立hook文件夹
+hook内部如同setup()函数的写法
+但是要记得两点
+第一点：export default要使用命名函数
+export default function useUser() {
+第二点：方法变量一定要记得return导出
+    return {
+        userList,
+        addUser,
+        deleteUser
+    }
+
+
+在App.vue中首先引用hook
+import useUser from './hook/user'
+然后需要解构赋值得到变量或方法
+ const { userList, addUser, deleteUser } = useUser();
+在template就可以如本地声明般使用

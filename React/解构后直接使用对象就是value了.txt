@@ -1,0 +1,7 @@
+      *fetchFMplayerList({payload:{id=99389306}},{ call, put }) {
+            // 在这里解构声明后就可以直接使用id了，而不是{id}，{id}还是对象，而id是number
+            console.log(id,"iiiiiiiiiiiii");
+            const idx ={id}       
+            const {data} = yield call(queryFMplayer,idx.id);  
+
+对象的解构赋值，只有key一样，才能把value传给左边key一样的对象属性

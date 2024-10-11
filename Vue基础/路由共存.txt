@@ -1,0 +1,2 @@
+path和params{}声明参数在编程式导航时不能共存，
+这里在router/index.js路由文件里不仅声明路径path，还同时声明一个name。遇到同时出现就用name替代path

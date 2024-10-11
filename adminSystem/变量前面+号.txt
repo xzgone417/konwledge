@@ -1,0 +1,22 @@
+javascript 中经常会看到在变量前面有个加号 + ，它有什么用处呢？
+其实很简单，就是把变量转换成 number 类型，这里就不多说，直接看下面的例子吧：
+// null：返回 0
+console.info(+null) // => 0
+// undefined：返回 NaN
+console.info(+undefined) // => NaN
+// 获取当前的时间戳，相当于`new Date().getTime()`
+console.info(+new Date())
+// 布尔型转换为整型：true 返回 1，false 返回 0
+console.info(+true) // => 1
+console.info(+false) // => 0
+// 空字符串：返回0
+console.info(+'') // => 0
+// 忽略前面的 0
+console.info(+'010') // => 10
+// 16进制转换成 10进制
+console.info(+'0x3E8') // => 1000
+// 科学计数法自动解析
+console.info(+'1e3') // => 1000
+console.info(+'1e-3') // => 0.001
+// 无法解析的格式：返回 null
+console.info(+'1,000') // => NaN

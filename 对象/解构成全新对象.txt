@@ -1,0 +1,2 @@
+{...state}       //返回新的state对象，对象是全新的，但key和value还是和原来一样的
+{...state,count:state.count+1}//修改state中的count属性值。并返回新count的全新state对象

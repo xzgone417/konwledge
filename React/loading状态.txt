@@ -1,0 +1,1 @@
+loading为true才会继续请求。也就是说请求为true执行请求，请求完毕为false，平时为false

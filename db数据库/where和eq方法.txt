@@ -1,0 +1,13 @@
+在jquery中
+eq() 方法返回带有被选元素的指定索引号的元素。
+@@索引号从 0 开头，所以第一个元素的索引号是 0（不是 1）。
+用法$(selector).eq(index)
+index	必需。规定元素的索引。可以是整数或负数。使用负数从被选元素的结尾返回第二个 <p> 元素。
+选取第二个 <p> 元素（索引号为 1）：
+$("p").eq(1).css("background-color","yellow");
+
+where是查找筛选找到对应元素符合的对象。然后.eq就是获取这么多对象中里面的一个对应元素相等的对象，where().eq()返回的还是对象
+
+二者等价
+ // let type = await Cases.where("type").eq(name.bzlist)
+    let type = await Cases.where("href",name.bzlist)

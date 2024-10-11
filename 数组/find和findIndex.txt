@@ -1,0 +1,21 @@
+let arr = [11,22,3,88]
+
+let result = arr.find(item => item >= 22)//22 找到第一个满足添加的元素，如果说：没有符合条件的元素，那么返回undefined;
+console.log(result,'最后打印的数据');
+
+let nodata = arr.find(item => item <= 2);
+console.log(nodata);//undefined
+
+let index = arr.findIndex( item => item >= 3)
+console.log(index);//0 找到则返回第一个满足条件的元素，如果说：没有符合条件的元素，那么返回-1
+
+let ind = arr.findIndex( item => item >= 100);
+console.log(ind);//-1
+
+find((element) => { /* ... */ } )
+find((element, index) => { /* ... */ } )
+find((element, index, array) => { /* ... */ } )
+
+filter((element) => { /* ... */ } )
+filter((element, index) => { /* ... */ } )
+filter((element, index, array) => { /* ... */ } )

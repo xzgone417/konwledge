@@ -1,0 +1,21 @@
+
+const once_config: RequestConfigType = {
+  ...often_config,
+  truthUrl: ？,
+};
+const once_query: RequestQueryType = {
+？？？？
+
+};
+const once_resHandler: ResponseHandlerType = {
+  ...often_resHandler,
+  onSuccess: (responseData) => {
+
+  },
+  onCodeFail: (responseData: any) => {
+
+  },
+};
+sdkRequest(once_config, once_query, once_resHandler);
+//
+//

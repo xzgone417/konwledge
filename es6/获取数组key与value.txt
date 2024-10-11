@@ -1,0 +1,18 @@
+{
+        let arr = ["a", "b", "c"];
+       1、 //获取数组的所有keys,会返回数组下标的迭代器对象(可以使用for of来遍历该迭代器对象)
+        const keys = arr.keys();
+        for (var key of keys) {
+          console.log(key);
+        }
+
+       2、 //获取数组的所有values,会返回数组所有值的迭代器对象(可以使用for of来遍历该迭代器对象)
+        const values = arr.values();
+        for (var value of values) {
+          console.log(value);
+        }
+       3、 //获取数组的所有信息,会返回数组所有信息的迭代器对象(可以使用for of来遍历该迭代器对象)
+        const entries = arr.entries();
+        for (var a of entries) {
+          console.log(a[0], a[1]);
+        }

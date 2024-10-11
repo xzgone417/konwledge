@@ -1,0 +1,8 @@
+用来记录版本号的。主要是多个并发任务同时存入数据库时会造成数据混乱。利_v判断脏数据
+详见浏览器Node收藏夹：你知道mongoose的并发管理吗
+
+去掉的方法
+var mySchema = new mongoose.Schema({
+    username:  'string'
+}, {versionKey: false}
+);

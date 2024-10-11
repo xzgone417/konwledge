@@ -1,0 +1,5 @@
+
+
+数组随机序号
+ random = Math.floor(Math.random()*array.length);
+   res.push(array[random])

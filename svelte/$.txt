@@ -1,0 +1,21 @@
+  let yet = 0;
+  let uu = "";
+  function names(params) {
+    yet++;
+    console.log("🚀XZG ~ names ~ yet:", yet);
+    console.log(uu, "end");
+  }
+
+  $: {
+    uu = "";
+    names();
+  }
+  setTimeout(() => {
+    // yet++;
+    // yet++;
+    uu = "olol";
+    console.log("🚀XZG ~ setTimeout ~ uu:", uu);
+    console.log("xxcc");
+  }, 5000);
+
+$:{}内部被赋值的值在外部改变是不会触发变化的，而且$:{}内部函数改变依赖值不会二次触发

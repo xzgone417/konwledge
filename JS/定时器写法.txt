@@ -1,0 +1,5 @@
+     const timer = setInterval(() => {
+        console.log("timer执行了")
+ clearInterval(timer)   //写在定时器最下面或其他地方，函数中定时器下方的函数部分还是会跑的
+      }, 1000);
+

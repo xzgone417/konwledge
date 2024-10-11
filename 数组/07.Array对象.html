@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var arr1 = new Array(1, 2, 4, 3);
+      console.log(arr1, arr1.length,"注释1");
+      //length表示数组的长度  此时数组长度为101
+      arr1[100] = 1;
+      console.log(arr1.length,"注释二");
+
+      console.log(arr1 instanceof Array);
+      //toString()这个方法是Object的
+      console.log(arr1.toString(),"注释3");
+      console.log(arr1.valueOf(),"注释4");
+
+      //数组的常用方法：
+      //1.栈操作的方法  push pop
+      var arr = [1, 2, 4, 3];
+      arr.push(5);
+      console.log(arr,"注释5");
+      arr.pop();
+      console.log("注释6");
+      console.log(arr);
+
+      //2.队列操作的方法  shift unshift
+      var arr3 = [1, 2, 3, 4];
+      arr3.shift();
+      console.log("注释7");
+      console.log(arr3);
+      arr3.unshift(5);
+      console.log("注释8");
+      console.log(arr3);
+
+      //3.排序
+      var arr41 = [11, 22, 3, 4, 5];
+      //reverse()会修改原数组.数组反转
+      arr41.reverse();
+      console.log("注释9");
+      console.log(arr41);
+      var arr42 = [11, 22, 3, 4, 5];
+      //sort()会修改原数组。所以这里的sort会把之前reverse反转好的数组再重新排序一遍
+      arr42.sort(function (item1, item2) {
+        return item1 - item2;
+      });
+      console.log("注释10");
+      console.log(arr42);
+
+      //4.数组操作
+      var arr5 = arr42.concat([88, 99]);
+      console.log("注释11");
+      console.log(arr5);
+      //截取数组，参数表示位置信息 (包前不包后)  slice()不会修改原数组，而是返回一个截取后的新数组
+      console.log("注释12");
+      //从数据序号2开始截，到6，但留头不留尾
+      console.log(arr5.slice(2, 6));
+      console.log("注释13");
+      console.log(arr5);
+
+      var arr6 = [1, 2, 3];
+      //splice()会修改原数组
+      //splice(1,1)   表示从1位置开始删除1个元素
+      //splice(1,1,'abc')  表示从1位置开始删除1个元素，又插入一个新的元素
+      //splice(1,0,'哈哈')  表示从1位置开始插入一个元素
+      //   arr6.splice(1, 1);
+      //   arr6.splice(1,1,'abc')
+      arr6.splice(1, 0, "哈哈", "嘻嘻");
+      console.log("注释14");
+      console.log(arr6);
+
+      //5.位置相关的方法
+      //arr7.indexOf(12) 表示从arr7中找12第一次出现位置
+      //arr7.lastIndexOf(12) 从arr7中找12最后一次出现的位置
+      //arr7.indexOf(12, 3) 从arr7中的第3个下标元素开始找12第一次出现的位置
+      var arr7 = [11, 22, 12, 44, 12, 33];
+      console.log("注释15");
+      console.log(arr7.indexOf(12));
+      console.log("注释16");
+      console.log(arr7.lastIndexOf(12));
+      console.log("注释17");
+      console.log(arr7.indexOf(12, 3));
+
+      //6.将数组转换为字符串
+      console.log("注释18");
+      console.log(arr7.join("-----"))
+    </script>
+  </body>
+</html>

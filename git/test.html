@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .polygon-image {
+        position: relative;
+      }
+
+      .polygon-image .img {
+        width: 200px;
+        height: 200px;
+        left: 0;
+        top: 0;
+        z-index: 4;
+        position: absolute;
+        background-color: blue;
+        clip-path: polygon(
+          0 0,
+          85% 0,
+          100% 40%,
+          0 100%
+        ); 
+      }
+      .polygon-image .img2 {
+        width: 220px;
+        height: 220px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 2;
+        background-color: rgb(21, 255, 0);
+        clip-path: polygon(
+          0 0,
+          85% 0,
+          100% 40%,
+          0 100%
+        ); /* 定义多边形的剪切路径 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="polygon-image">
+      <div class="img"></div>
+      <div class="img2"></div>
+    </div>
+  </body>
+</html>

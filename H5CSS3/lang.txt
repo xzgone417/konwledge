@@ -1,0 +1,2 @@
+    // 动态修改html lang
+    document.getElementsByTagName("html")[0].lang = 'xxxx';

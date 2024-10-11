@@ -1,0 +1,49 @@
+组合式API
+    const num = ref(100);
+    const divRef = ref(null);
+
+    //计算属性的普通写法
+    const doubleNum = computed(() => {
+      return num.value * 2
+    })
+
+    //计算属性的set和get  当给计算属性赋值的时候执行set，当获取计算属性的值的时候执行get
+    const plusOne = computed({
+      set(val) {
+        num.value = val - 1
+      },
+      get() {
+        return num.value + 1
+      }
+    })
+
+OptionsAPI
+只读
+ computed: {
+      计算属性是一个方法，但更算是一个属性，其所依赖的属性值发生变化它也会跟着变化，重新求值
+    // 在computed中可以定义一些属性，这些属性叫做【计算属性】，计算属性的本质就是一个方法，
+只不过我们在使用这些计算属性的时候是把它们的名称直接当作属性来使用的，并不会把计算属性当作方法去调用
+    // 注意1： 计算属性在引用的时候，一定不要加()去调用，直接把它当作普通属性去使用就好了；
+    // 注意2： 在计算属性的function中所用到的任何data中的数据发送了变化，就会立即重新计算这个计算属性的值
+    // 注意3： 计算属性的求值结果会被缓存起来，方便下次直接使用。
+    fullname: function () {
+      return this.firstname + "-" + this.lastname;
+    },
+  },
+
+
+读写
+computed: {
+  fullName: {
+    // getter
+    get() {
+      return this.firstName + ' ' + this.lastName
+    },
+    // setter
+    set(newValue) {
+      const names = newValue.split(' ')
+      this.firstName = names[0]
+      this.lastName = names[names.length - 1]
+    }
+  }
+}

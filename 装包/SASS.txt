@@ -1,0 +1,8 @@
+先试第一个，可以就不用继续了
+尽量使用.scss后缀的文件
+
+npm install --save-dev sass
+
+npm install node-sass@6.0.1 --save-dev
+
+npm install sass-loader@10.2.0 --save-dev

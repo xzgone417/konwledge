@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page A</title>
+  </head>
+  <body>
+    <button onclick="btn()">send</button>
+    <iframe id="frameB" src="http://127.0.0.1:5501/postmessage/b.html"></iframe>
+    <script>
+      var iframeWindow = document.getElementById("frameB").contentWindow;
+      var btn = function () {
+        iframeWindow.postMessage(
+          { type: "message", content: "Hello from Page A!" },
+          "http://127.0.0.1:5501"
+        );
+      };
+    </script>
+  </body>
+</html>

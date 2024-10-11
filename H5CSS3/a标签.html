@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .long {
+            height: 2000px;
+            background-color: antiquewhite;
+        }
+
+        .ina {
+            margin-top: 10px;
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            text-decoration: none;
+        }
+
+        .imga {
+            margin-top: 10px;
+            width: 100px;
+            height: 100px;
+        }
+
+        /* button {
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+    } */
+        button {
+            display: block;
+            width: 88rpx;
+            height: 88rpx;
+            margin: 0;
+            padding: 0;
+            border: none;
+            border-radius: none;
+            outline: none;
+            background-color: transparent;
+        }
+
+        /* button:after {
+        border: unset;
+        margin: 0;
+        padding: 0;
+    } */
+    </style>
+</head>
+
+<body>
+    <div class="long"></div>
+    <a href="#">11111111111111</a>
+    <a href="#top">2222222222222222</a>
+    <a href="javascript:void(0);">3333333333333333333</a>
+    <a href="javascript:;">4444444444444444</a>
+    <div></div>
+    <a href="#top">
+        <div class="ina">
+            55555555555
+        </div>
+    </a>
+    <div class="ina">
+        <a href="#top">66666666</a>
+    </div>
+    <div class="imga">
+        <a href="#top" style="display: inline-block; text-decoration: none;" id="mya">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAgCAYAAADwvkPPAAAAAXNSR0IArs4c6QAAAq5JREFUSEud1DtoFEEYB/D/t3cQfBSC2llYCIKVoBYWgqRIVHwkmhR5FBpIYQQrMXiXmZ2dOQWxiSIKQdBG8P0EHyhiIzbGYCGi8YGILxQVowjRzGf2mDsmySV7e9vu/n98+33zDaHGR2vdDqAfwKC1tkMp9Y1qsaIo6iCiUwCycZ6IWoUQF1JjURQ1E9F5ABlXyHsiWiOEeJMKM8a0MPMZD/oKoElK+aBYYbW/aYxpYubTAGa7zG8iahFC3CoZVWHGmAZmvghgrgv+JKJmIcQ9v5hEzBhTz8zXAMxxwREi2iqEuDv5r2bEXEVXAMxywT/M3BaG4dVK7ZkWM8asZeZ4agtc8B8zd4ZheHa6PlfECoXCSmvtDQALXXCUiNqEEJdmGtgUTGu9CsBNAPNd8C+ATinluaTJT8C01qsBxP0oVcQAuqSU8WlPfMqYUmp5EASXASz2Ut1SyhOJivugiCmllgRBcMeHmLkrDMOT1ULFDVBKLQuC4DaAReWTTNQjhDieBipiWutHAFa44BiAHinlQFqohH0fv5fmufAPAPVSyqGasCiKWokovgkCB7wDsF5K+TQtWByA1no7AL/ZnwCsk1I+SQOWj4YxZiczH/PCcYXNUsrBasEJh9YYs4uZj3rhYSLaJIR4Xg04ZZ0qgC+CIGjo6+t7mwRWXHSt9Z7x++uQF35trW1USr1Mteilj7XWOQD7vfAzItoihBieDky6HPPMXPA243EQBBvy+fznSmA117ZgZu2Fh7LZbGMul/syGUzE4kAURQeIaJ8PWms3KqU++GBVmDvYBwHs9cIPM5nMtnw+/7HchqRx+++11pPB+3V1dZt7e3tHioueBnMVHgaw28tdt9a2K6V+pcZixBgzwMzdDhwjoqVCiFc1YW4o/US0A8ARa61RSo3+B64q+yHo/SaIAAAAAElFTkSuQmCC"
+                class="back-image" alt="" style="height: 100px;" />
+        </a>
+    </div>
+    <div class="imga" style="background-color: rgb(201, 255, 196);">
+        <a href="#top" style="display: inline-block; text-decoration: none;" id="mya2" onclick="acl(event,yu)">
+            77777777777
+        </a>
+    </div>
+    <div class="imga" style="background-color: rgb(196, 231, 255);">
+        <a href="#top" style="display: inline-block; text-decoration: none;height: 100%; " onclick="acl(event,yu)">
+            88888888888
+            <div>
+                999999999999
+            </div>
+        </a>
+        textttt
+    </div>
+    <script>
+        var yu = 1
+        var mya = document.querySelector("#mya")
+        mya.addEventListener('click', function (e) {
+            console.log(e);
+            e.preventDefault()
+        })
+        function acl(params, p1) {
+            console.log(params, p1);
+            params.preventDefault()
+        }
+    </script>
+</body>
+
+</html>

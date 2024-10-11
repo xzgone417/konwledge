@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    在HTML中，`offsetWidth`、`clientWidth`和`scrollWidth`都是用于获取元素的宽度的属性。它们的区别如下：
+
+    - `offsetWidth`：包括元素的边框、内边距和滚动条（如果存在）的宽度。
+    - `clientWidth`：包括元素的内边距和滚动条（如果存在）的宽度，但不包括边框的宽度。
+    - `scrollWidth`：包括元素的实际内容的宽度，不包括边框、内边距和滚动条的宽度。
+
+    因此，`offsetWidth`和`clientWidth`都包括滚动条的宽度，而`scrollWidth`不包括滚动条的宽度。如果你想要获取不包括滚动条的宽度，可以使用`clientWidth`或`scrollWidth`属性。
+    <!-- 
+    在浏览器中，`window`对象的`offsetWidth`、`clientWidth`和`scrollWidth`属性分别表示窗口的宽度，不包括滚动条的宽度。具体来说：
+
+- `offsetWidth`：包括窗口的边框、内边距和垂直滚动条（如果存在）的宽度。
+- `clientWidth`：包括窗口的内边距，但不包括边框和滚动条的宽度。
+- `scrollWidth`：包括窗口的实际内容的宽度，不包括边框、内边距和滚动条的宽度。
+
+因此，`offsetWidth`和`clientWidth`都不包括滚动条的宽度，而`scrollWidth`也不包括滚动条的宽度，只包括内容的宽度。如果你想要获取包含滚动条的宽度，你可以通过计算`offsetWidth`和`scrollWidth`之间的差异来获得滚动条的宽度。 -->
+
+    <!-- 在浏览器中，`document.body.clientWidth`和`document.documentElement.clientWidth`表示不同的宽度值：
+
+- `document.body.clientWidth`：表示`<body>`元素的可见宽度，不包括边框、内边距和滚动条的宽度。这个属性通常用于获取`<body>`元素的宽度，但在某些情况下可能会受到CSS样式的影响。
+
+- `document.documentElement.clientWidth`：表示`<html>`元素的可见宽度，不包括边框、内边距和滚动条的宽度。这个属性通常用于获取整个文档的可见宽度，因为`<html>`元素代表整个文档的根元素。
+
+总的来说，`document.body.clientWidth`用于获取`<body>`元素的宽度，而`document.documentElement.clientWidth`用于获取整个文档的宽度。通常情况下，它们的值应该是相似的，但在某些情况下可能会有细微的差异，特别是在处理CSS样式时。 -->
+    <!-- // 获取整个文档的可见宽度
+    var documentClientWidth = document.documentElement.clientWidth;
+
+    // 获取整个文档的实际内容宽度，包括滚动条的宽度
+    var documentScrollWidth = document.documentElement.scrollWidth;
+
+    // 计算滚动条的宽度
+    var scrollbarWidth = documentScrollWidth - documentClientWidth;
+
+    console.log("滚动条宽度为：" + scrollbarWidth + "px"); -->
+
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+在vue.config.js配置文件中写代理代码块
+
+使用代理, 首先需要有一个标识, 标明哪些连接需要使用代理，只有有标识的连接才用代理。
+”/api”就是告知，接口以”/api”开头的才用代理，所以写请求接口时要使用“/api/xx/xx”的形式，
+使用代理后生成的请求路径就是’http://localhost:8083/api/xx/xx’.
+
+    proxy: {
+        '/api': {
+          target: 'http://localhost:3000', // 后端接口的域名
+          changeOrigin: true,  //是否开启跨域
+          // rewrite: path => path.replace(/^\/api/, ''),     //路径重写的写法。
+
+//pathRewrite:   "^/api":""   路径重写
+即当实际需要请求的路径里面没有”/api“时. 就需要 pathRewrite,
+用"^/api":"", 把"/api"去掉, 这样既能有正确标识, 又能在请求到正确的路径
+  
+'^/api/': '' //将访问路径的/api/替换成’‘，后台服务不用加api了,但前端的请求地址还是要加/api/
+
+^/api相当于正则表达式：/^\/api/。 
+
+"^/api":"" 即匹配所有/api开头的路径将其重写为""
+       },
+      },
+需要用到代理的接口需要这么写
+// 登录接口
+export const Login = data => {
+  return request({
+    url: '/api/login',
+    method: 'post',
+    data,
+  })
+}

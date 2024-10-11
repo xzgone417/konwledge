@@ -1,0 +1,15 @@
+    console.log("a")
+      new Promise()的时候，所入参的函数是立马执行的
+      Promise入参的函数有一个参数是resolve，当我们调用resolve()方法之后，promise的then就会执行了
+      Promise的then会入微任务队列
+      var promise = new Promise(
+         function(resolve,reject){           //这个
+          console.log("b")                    //入参的
+             resolve()                            //函数
+            }                                        //立马执行。不会异步等待
+       )
+   //但是resolve()在调用之后，这里的then就是异步的了
+      promise.then(function(){
+          console.log("promise的then方法执行了")
+      })
+      console.log("c")

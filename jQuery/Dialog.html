@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.11/jquery.lazy.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <dialog id="myDialog">
+        <h2>这是一个对话框</h2>
+        <button id="openDialog2">打开对话框2</button>
+        <p>对话框的内容在这里。</p>
+        <button id="closeDialog">关闭对话框</button>
+    </dialog>
+    <dialog id="myDialog2">
+        <p>这是一个对话框</p>
+        <button id="closeDialog2">关闭对话框</button>
+    </dialog>
+    <button id="openDialog">打开对话框</button>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-content">
+            222
+        </div>
+    </div>
+
+
+
+    <script>
+        var myDialog = document.getElementById('myDialog');
+        var openDialog = document.getElementById('openDialog');
+        var closeDialog = document.getElementById('closeDialog');
+
+        openDialog.onclick = function () {
+            myDialog.showModal();
+        };
+
+        closeDialog.onclick = function () {
+            myDialog.close();
+        };
+    </script>
+
+
+    <script>
+        var dialog = document.getElementById('myDialog2');
+        var closeDialogButton = document.getElementById('closeDialog2');
+        var openDialog2 = document.getElementById('openDialog2');
+        // 点击关闭按钮时关闭对话框
+        closeDialogButton.addEventListener('click', function () {
+            dialog.close();
+        });
+        openDialog2.onclick = function () {
+            myDialog2.showModal();
+        };
+        // 点击对话框外部时关闭对话框
+        document.addEventListener('click', function (event) {
+            if (event.target === dialog) {
+                dialog.close();
+            }
+        });
+    </script>
+
+</body>
+
+</html>

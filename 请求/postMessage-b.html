@@ -1,0 +1,35 @@
+<!-- 
+这句话 var targetWindow = window.opener || window.parent; 是用来确定哪个窗口对象将接收 postMessage 消息。
+
+window.opener: 这个属性引用的是通过 window.open() 方法打开当前窗口的窗口。如果当前窗口不是通过 window.open() 打开的，
+那么 window.opener 将是 null。
+window.parent: 这个属性引用的是当前窗口的父窗口。如果当前窗口没有父窗口（例如，它是一个顶层窗口），
+那么 window.parent 就是当前窗口本身。
+所以，这行代码的逻辑是：
+
+如果当前窗口是通过另一个窗口使用 window.open() 打开的，那么 targetWindow 将是打开它的那个窗口（即 window.opener）。
+如果当前窗口不是通过 window.open() 打开的，或者 window.opener 是 null，那么 targetWindow 将是当前窗口的父窗口（即 window.parent）。 
+
+在网页中，一个窗口（或称为标签页）可以有父窗口的情况通常出现在以下几种情况：
+
+弹出窗口（Pop-up Windows）:
+当使用 window.open() 方法打开一个新窗口时，新打开的窗口会将其打开者视为父窗口。
+例如，点击一个链接或按钮时，通过 JavaScript 打开一个新的浏览器窗口或标签页。
+var childWindow = window.open('https://example.com', 'ChildWindowName');
+// 在 childWindow 中，childWindow.parent 将引用打开它的原始窗口
+iframe 或 frame 元素:
+当一个页面包含 <iframe> 或 <frame> 元素时，嵌入的页面（iframe 内部的页面）会将包含它的页面视为父窗口。
+    在这种情况下，iframe 中的脚本可以通过 window.parent 访问其父页面的窗口对象。
+    //fu
+<iframe src="https://example.com"></iframe>
+在 iframe 的内容页面中：
+// 这将引用包含 iframe 的页面
+var parentWindow = window.parent;
+多窗口应用（Multiple Window Applications）:
+在一些复杂的网页应用中，可能会设计成有多个窗口或标签页，它们之间通过某种方式相互关联。在这种情况下，一些窗口可能会被视为其他窗口的父窗口。
+以下是一些具体的场景：
+
+单页应用（SPA）中的弹出对话框：一个单页应用可能会打开一个模态对话框作为新窗口，这个对话框的父窗口是原始的应用窗口。
+在线编辑器或IDE：这些工具可能会使用多个窗口来展示不同的编辑器视图或控制台输出，其中一些窗口可能作为其他窗口的父窗口。
+多步骤表单或向导：在用户完成一系列步骤的过程中，每个步骤可能会在新窗口中打开，而所有这些窗口的父窗口是启动向导的那个页面。
+-->

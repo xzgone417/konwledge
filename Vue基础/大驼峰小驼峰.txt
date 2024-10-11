@@ -1,0 +1,3 @@
+小驼峰：myButton，这是小驼峰。大驼峰是MyButton。第一个首字母也会大写
+分隔符：my-button
+vue组件中分隔符命名的组件，页面上用驼峰引用没效果，因为myButton会被浏览器解析为mybutton，而不是my-button

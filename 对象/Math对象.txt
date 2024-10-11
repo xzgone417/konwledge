@@ -1,0 +1,17 @@
+<script>
+    console.log(Math.PI);                   // 获取圆周率l
+    console.log(Math.abs(-25));             // 获取绝对值，返回结果:25
+    console.log(Math.max(5, 7, 9, 8));      // 获取最大值，返回结果: 9
+    console.log(Math.min(6, 2, 5, 3));      // 获取最小值，返回结果:2
+    console.log(Math.pow(2, 4));            // 获取2的4次幂，返回结果:16
+    console.log(Math.sqrt(9));              // 获取9的平方根，返回结果为:3
+    console.log(Math.ceil(1.1));            // 向上取整，返回结果: 2
+    console.log(Math.ceil(1.9));            // 向上取整，返回结果:2
+    console.log(Math.floor(1.1));           // 向下取整，返回结果: 1
+    console.log(Math.floor(1.9));           // 向下取整，返回结果: 1
+    console.log(Math.round(1.1));           // 四舍五入，返回结果: 1
+    console.log(Math.round(1.5));           // 四舍五入，返回结果: 2
+    console.log(Math.round(1.9));           // 四舍五入，返回结果: 2
+    console.log(Math.round(-1.5));          // 四舍五入，返回结果: -1(取较大值)
+    console.log(Math.round(-1.6));          // 四舍五入，返回结果: -2
+</script>

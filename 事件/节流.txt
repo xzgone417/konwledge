@@ -1,0 +1,43 @@
+第一次非立即执行
+export function throttle(f,t){
+    let timer=true;
+    return (...arg)=>{
+        if(!timer){
+            return;
+        }
+        timer=false;
+        setTimeout(()=>{
+            f(...arg);
+            timer=true;
+        },t)
+
+    }
+}
+第一次立即执行
+export function throttleFirstExt(f, t) {
+    let flag = true;
+    return (...args) => {
+        if (flag) {
+            f(...args);
+            flag = false;
+            setTimeout(() => {
+                flag = true
+            }, t)
+        }
+    }
+}
+
+合并
+export function throttle(f, t, im = false){
+    let flag = true;
+    return (...args)=>{
+        if(flag){
+            flag = false
+            im && f(...args)
+            setTimeout(() => {
+                !im && f(...args)
+                flag = true
+            },t)
+        }
+    }
+}

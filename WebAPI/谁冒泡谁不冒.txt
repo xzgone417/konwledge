@@ -1,0 +1,2 @@
+mouseover和mouseout支持事件冒泡，
+mouseenter和mouseleave不支持事件冒泡。

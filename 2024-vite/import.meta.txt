@@ -1,0 +1,22 @@
+`import.meta` 在 Vite 中是一个特殊的对象，提供了与当前模块相关的元数据和系统特定的功能。它基于 ES Module 的 `import.meta` 的标准属性，但 Vite 在开发环境和生产环境中添加了一些扩展属性，尤其是与模块热替换（Hot Module Replacement, HMR）和环境变量相关的属性。
+
+在使用 Vite 时，`import.meta` 常见的属性如下：
+
+1. **`import.meta.url`**：
+   - 标准属性，返回当前模块的 URL。在浏览器环境中，这通常是一个 `blob:` 或 `http:` URL，指向当前正在执行的脚本文件。
+
+2. **`import.meta.env`**：
+   - 这是一个包含环境变量的对象。在 Vite 中，所有以 `VITE_` 开头的环境变量在构建时都会被静态替换，并且可以通过 `import.meta.env` 访问。例如，如果你有一个环境变量 `VITE_API_URL`，你可以通过 `import.meta.env.VITE_API_URL` 访问它。
+   - 这个对象还包括一些 Vite 特有的属性：
+     - `import.meta.env.MODE`：构建模式，如 `development` 或 `production`。
+     - `import.meta.env.BASE_URL`：应用的基本 URL。
+     - `import.meta.env.PROD`：布尔值，表示是否在生产环境。
+     - `import.meta.env.DEV`：布尔值，表示是否在开发环境。
+
+3. **`import.meta.glob`** 和 **`import.meta.globEager`**：
+   - 这些方法允许在代码中动态地引入多个模块。`import.meta.glob` 返回一个对象，键是模块路径，值是函数，调用这些函数会返回模块的 Promise。`import.meta.globEager` 类似，但是它同步地加载模块并立即返回它们的内容。
+
+4. **`import.meta.hot`**：
+   - 在开发环境中可用，用于支持模块热替换（HMR）。这个属性提供了一个接口来接受当前模块的热更新、注册更新后的回调函数等。例如，使用 `import.meta.hot.accept()` 可以表明该模块接受自己的更新。
+
+以上是 Vite 提供的一些关于 `import.meta` 的扩展属性。具体的属性和方法可能会根据 Vite 的版本和你的配置有所不同。你可以查阅最新的 Vite 文档或查看实际项目中的 `import.meta` 以获取最准确的信息。

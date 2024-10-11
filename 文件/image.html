@@ -1,0 +1,85 @@
+要使用 JavaScript
+读取图片文件的基本信息（如文件名、大小、类型）以及图片的宽度和高度，可以结合
+`FileReader` 和 `Image`
+对象来实现。以下是一个完整的示例，展示如何从用户上传的图片文件中读取并显示这些信息。
+### 1. **HTML 文件上传输入** 首先，创建一个文件上传输入框： ```html
+<input type="file" id="fileInput" accept="image/*" />
+<div id="fileInfo"></div>
+``` ### 2. **使用 JavaScript 读取文件信息和图片尺寸** 在 JavaScript 中，通过
+`FileReader` API 读取图片文件数据，然后通过 `Image`
+对象加载该数据，以获取图片的宽度和高度。 ```javascript
+document.getElementById('fileInput').addEventListener('change', function(event)
+{ const file = event.target.files[0]; // 获取第一个上传的文件 if (file) { //
+获取文件的基本信息 const fileName = file.name; const fileSize = (file.size /
+1024).toFixed(2); // 文件大小，单位为 KB const fileType = file.type; //
+读取图片文件并获取宽高信息 const reader = new FileReader(); reader.onload =
+function(e) { const img = new Image(); img.src = e.target.result; img.onload =
+function() { const imgWidth = img.width; const imgHeight = img.height; //
+显示文件和图片信息 const fileInfo = `
+<p>File Name: ${fileName}</p>
+<p>File Size: ${fileSize} KB</p>
+<p>File Type: ${fileType}</p>
+<p>Image Width: ${imgWidth}px</p>
+<p>Image Height: ${imgHeight}px</p>
+`; document.getElementById('fileInfo').innerHTML = fileInfo; // 显示图片预览
+img.style.maxWidth = '100%'; // 限制图片最大宽度
+document.getElementById('fileInfo').appendChild(img); }; };
+reader.readAsDataURL(file); // 将文件读取为 Data URL } }); ``` ### 3.
+**完整示例代码** ```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Read Image File Info and Dimensions</title>
+  </head>
+  <body>
+    <input type="file" id="fileInput" accept="image/*" />
+    <div id="fileInfo"></div>
+
+    <script>
+      document
+        .getElementById("fileInput")
+        .addEventListener("change", function (event) {
+          const file = event.target.files[0];
+          if (file) {
+            const fileName = file.name;
+            const fileSize = (file.size / 1024).toFixed(2); // 转换为KB
+            const fileType = file.type;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              const img = new Image();
+              img.src = e.target.result;
+
+              img.onload = function () {
+                const imgWidth = img.width;
+                const imgHeight = img.height;
+
+                const fileInfo = `
+              <p>File Name: ${fileName}</p>
+              <p>File Size: ${fileSize} KB</p>
+              <p>File Type: ${fileType}</p>
+              <p>Image Width: ${imgWidth}px</p>
+              <p>Image Height: ${imgHeight}px</p>
+            `;
+                document.getElementById("fileInfo").innerHTML = fileInfo;
+
+                img.style.maxWidth = "100%"; // 限制图片最大宽度以适应容器
+                document.getElementById("fileInfo").appendChild(img);
+              };
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+    </script>
+  </body>
+</html>
+``` ### 4. **代码解释** - **文件信息读取**： - `file.name`：获取文件名。 -
+`file.size`：获取文件大小（以字节为单位），并转换为 KB。 -
+`file.type`：获取文件类型（MIME 类型）。 - **图片宽高读取**： - 使用
+`FileReader` 将图片文件读取为 Data URL，然后将其作为 `Image` 对象的 `src`
+属性值。 - `img.onload` 事件触发时，图片已经加载完成，此时可以通过 `img.width`
+和 `img.height` 获取图片的宽度和高度。 - **图片预览**： -
+将图片加载后，设置最大宽度为 `100%`，使其适应容器，并将其显示在页面上。
+通过以上代码，你可以轻松读取图片文件的基本信息和其尺寸，并在页面上显示出来。

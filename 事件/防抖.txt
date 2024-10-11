@@ -1,0 +1,57 @@
+这样定义
+const cancel = debounceFirstExe(daying, 1000, { m: 'my' });
+return 的返回值参数这样调用
+ @click="cancel('args')"
+
+第一次非立即执行
+export function debounce(f, t){
+    let timer;
+    return (...arg) => {
+        clearTimeout(timer);
+        timer = setTimeout(() =>{
+            f( ...arg)
+        }, t)
+    }
+}
+
+第一次立即执行
+export function debounceFirstExe(f, t){
+    let timer, flag = true;
+    return (...args) => {
+        if (flag){
+            f(...args);
+            flag = false;
+        }else {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                f(...args);
+                flag = true;
+            }, t)
+        }
+    }
+}
+合并
+export  function  debounce(f, t,im = false){
+    let timer, flag = true;
+    return (...args) => {
+        // 需要立即执行的情况
+       if (im){
+           if (flag){
+               f(...args);
+               flag = false;
+           }else {
+               clearTimeout(timer);
+               timer = setTimeout(() => {
+                   f(...args);
+                   flag = true
+               }, t)
+           }
+       }else {
+           // 非立即执行的情况
+           clearTimeout(timer);
+           timer = setTimeout(() => {
+               f(...args)
+           }, t)
+       }
+    }
+}

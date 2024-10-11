@@ -1,0 +1,2 @@
+server端写的是接口，models是用来调用数据库的，interfaces用于把数据库的数据写到对应接口中。
+axios也就是Ajax是向接口发送数据请求数据回调的

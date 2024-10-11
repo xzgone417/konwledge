@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .custom-select-wrapper {
+        position: relative;
+        display: inline-block;
+        width: 200px;
+      }
+
+      .custom-select {
+        display: flex;
+        align-items: center;
+
+        /* background-color: #b4b4b4; */
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+
+      .custom-select-value {
+        border: 1px solid #ccc;
+        flex-grow: 1;
+        padding: 5px;
+      }
+
+      .custom-select-arrow {
+        background-color: #a50000;
+        color: white;
+        padding: 5px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .custom-select-arrow:hover {
+        background-color: #8b0000;
+      }
+
+      select {
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="custom-select-wrapper">
+      <div class="custom-select">
+        <div class="custom-select-value">Witch Awakens</div>
+        <div class="custom-select-arrow">&#9662;</div>
+      </div>
+      <select id="select">
+        <option value="1">Witch Awakens</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </select>
+    </div>
+    <script>
+      document
+        .querySelector(".custom-select")
+        .addEventListener("click", function () {
+          this.nextElementSibling.click(); // 触发 select 标签的点击事件
+        });
+
+      document.querySelector("#select").addEventListener("change", function () {
+        const selectedValue = this.options[this.selectedIndex].text;
+        document.querySelector(".custom-select-value").textContent =
+          selectedValue;
+      });
+    </script>
+  </body>
+</html>

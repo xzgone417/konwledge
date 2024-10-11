@@ -1,0 +1,7 @@
+ <link rel="stylesheet" type="text/css" href="styles.css">
+ <script src="script.js"></script>
+
+ <style>
+    @import url('styles/reset.css');
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+ </style>

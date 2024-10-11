@@ -1,0 +1,5 @@
+二者都是用来引入模块的，所以先判断引入什么，再看import必须搭配export，express框架必须搭配require使用，一般使用express就是后端服务框架了
+
+node是commonJs模块规范，所以从
+
+import
