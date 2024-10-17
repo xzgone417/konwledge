@@ -7,3 +7,13 @@ api中import的是 request是因为文件名为requset。而不是因为导出re
 此时相当于导入模块文件下相对应的值赋给相同单词的变量
 
 当然api在引用request时还是和导出的对象息息相关的。相当于引用对象转换为导出对象进行一遍request文件流程。
+
+node不认识ES6的import，只能用CommonJs的require导入
+
+当export {xx} 时,使用 import { xx } from xxx    ，即直接export  xx需要在import中用花括号{}括住
+
+export default最多只能有一个
+一个js模块只能有一个默认导出，因此在导入的时候可以随意命名。建议与导入的文件名同名
+当export default xx 时，使用 import 任意名 from xx文件  ，export default xx可以不需要用花括号括住{}
+
+无论哪种导出，使用时都是直接使用文件下导出的对象或变量

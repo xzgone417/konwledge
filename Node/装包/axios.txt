@@ -1,0 +1,17 @@
+npm i axios -S --legacy-peer-deps
+
+`--legacy-peer-deps` 是一个在 npm（Node Package Manager）命令行界面（CLI）中使用的标志。当你使用 npm 安装 Node.js 包时，这个标志会影响 npm 如何处理 peer dependencies（同伴依赖）。
+peer dependencies 是一种特殊的依赖关系，指的是某个包的正常工作需要宿主项目（也就是使用该包的项目）中安装的另一个包的特定版本。这通常用于插件或其他与宿主框架或库紧密集成的包。
+以下是对 `--legacy-peer-deps` 标志的解释：
+- **传统行为**：在 npm 6 及之前的版本中，如果遇到 peer dependencies，npm 不会自动安装它们。相反，它会给出一个警告，提示用户需要手动安装 peer dependencies。
+- **新行为**：从 npm 7 开始，npm 改变了处理 peer dependencies 的方式。默认情况下，如果遇到 peer dependencies，npm 会尝试自动安装它们。如果 peer dependencies 之间或与项目中的其他依赖存在版本冲突，npm 可能会安装多个版本的同一个包，以解决这些冲突。
+- **使用 `--legacy-peer-deps` 标志**：当你使用 `--legacy-peer-deps` 标志时，npm 会采用 npm 6 及之前版本的传统行为，即不会自动安装 peer dependencies，并且不会因为 peer dependencies 冲突而失败。这可以用于避免在项目升级 npm 版本后出现的兼容性问题。
+例如，以下命令会以传统方式处理 peer dependencies：
+```sh
+npm install --legacy-peer-deps
+```
+使用 `--legacy-peer-deps` 的场景可能包括：
+- 当你不想让 npm 自动处理 peer dependencies，而是想要手动控制依赖关系时。
+- 当你的项目依赖于特定的 peer dependencies 版本，并且自动安装可能会引起问题时。
+- 当你在升级到新版本的 npm 后遇到了兼容性问题，而使用这个标志可以作为一个临时的解决方案。
+需要注意的是，长期使用 `--legacy-peer-deps` 可能会导致依赖关系管理上的问题，因为它可能会隐藏真正的依赖冲突。因此，最好还是解决 peer dependencies 的问题，而不是完全忽略它们。

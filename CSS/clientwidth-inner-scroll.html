@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-    在HTML中，`offsetWidth`、`clientWidth`和`scrollWidth`都是用于获取元素的宽度的属性。它们的区别如下：
+  <body>
+    在 HTML 中，`offsetWidth`、`clientWidth` 和 `scrollWidth`
+    是用于获取元素宽度的属性，但它们各自代表不同的宽度测量值。以下是它们的区别：
+    1. `offsetWidth`: - `offsetWidth`
+    返回元素的布局宽度，包括元素的边框（`border`）、内边距（`padding`）和滚动条（如果存在且渲染的话）。
+    - 它是一个只读属性，其值是整数，单位为像素。 - 计算公式通常是：`offsetWidth
+    = width + padding + border + (滚动条宽度，如果有的话)`。 2. `clientWidth`: -
+    `clientWidth`
+    返回元素的可视区域宽度，包括元素的内容和内边距（`padding`），但不包括边框（`border`）、外边距（`margin`）和滚动条。
+    - 它也是一个只读属性，单位为像素。 - 计算公式通常是：`clientWidth = width +
+    padding - (滚动条宽度，如果有的话)`。 3. `scrollWidth`: - `scrollWidth`
+    返回元素的整个内容宽度，包括元素的滚动内容的宽度，但不包括边框（`border`）、外边距（`margin`）和滚动条。
+    - 如果元素的内容不需要滚动，则 `scrollWidth` 等于 `clientWidth`。 -
+    它是一个只读属性，单位为像素。 - `scrollWidth`
+    可以用来确定元素是否需要滚动条，如果 `scrollWidth` 大于
+    `clientWidth`，则元素的内容超出了可视区域，需要滚动条来查看。 总结： -
+    `offsetWidth` 考虑了边框和滚动条。 - `clientWidth`
+    考虑了内容区和内边距，不包括边框和滚动条。 - `scrollWidth`
+    考虑了内容的实际宽度，不包括边框和滚动条，但可能包括溢出的内容。
 
-    - `offsetWidth`：包括元素的边框、内边距和滚动条（如果存在）的宽度。
-    - `clientWidth`：包括元素的内边距和滚动条（如果存在）的宽度，但不包括边框的宽度。
-    - `scrollWidth`：包括元素的实际内容的宽度，不包括边框、内边距和滚动条的宽度。
-
-    因此，`offsetWidth`和`clientWidth`都包括滚动条的宽度，而`scrollWidth`不包括滚动条的宽度。如果你想要获取不包括滚动条的宽度，可以使用`clientWidth`或`scrollWidth`属性。
     <!-- 
     在浏览器中，`window`对象的`offsetWidth`、`clientWidth`和`scrollWidth`属性分别表示窗口的宽度，不包括滚动条的宽度。具体来说：
 
@@ -41,7 +52,5 @@
     var scrollbarWidth = documentScrollWidth - documentClientWidth;
 
     console.log("滚动条宽度为：" + scrollbarWidth + "px"); -->
-
-</body>
-
+  </body>
 </html>

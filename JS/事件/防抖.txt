@@ -1,4 +1,4 @@
-这样定义
+这样定义防抖
 const cancel = debounceFirstExe(daying, 1000, { m: 'my' });
 return 的返回值参数这样调用
  @click="cancel('args')"

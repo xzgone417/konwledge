@@ -1,2 +1,0 @@
-例如：模块名前面加上 * as 表示使用当前版本最新版
-import * as moment from 'moment'

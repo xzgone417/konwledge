@@ -1,4 +1,4 @@
-第一次非立即执行
+第一次非立即执行节流
 export function throttle(f,t){
     let timer=true;
     return (...arg)=>{

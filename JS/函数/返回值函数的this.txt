@@ -1,4 +1,0 @@
-函数作为返回值，那么返回值函数中的this就是window，
-想要改变它的this，必须在引用return的函数即返回值函数的上级函数中声明var that = this;然后用that取代返回值函数的this。
-
-定时器中默认的this就是window

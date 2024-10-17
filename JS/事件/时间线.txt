@@ -1,4 +1,5 @@
-// 当文档解析完成 DOMContentLoaded 事件就触发，比onload事件等到文档加载并执行完成后触发效率更高。注意：DOMContentLoaded 事件只在addEventListener绑定事件身上生效
+// 当文档解析完成 DOMContentLoaded 事件就触发，比onload事件等到文档加载并执行完成后触发效率更高。
+注意：DOMContentLoaded 事件只在addEventListener绑定事件身上生效
 
   document.onreadystatechange = function () {
     if (document.readyState == "complete") {
