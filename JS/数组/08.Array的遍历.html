@@ -12,49 +12,50 @@
       // for in     遍历对象的自定义属性(for in只用来遍历对象，不要遍历数组)
       // for of     遍历数组(迭代器遍历Iterator)
       var arr = [11, 22, 33, 44, 5, 66];
-      for (var o of arr) {
-        console.log(o);
-      }
+
+      // for (var o of arr) {
+      //   console.log(o);
+      // }
 
       //常见的遍历数组的方法：forEach  map  filter  every  some
       //forEach仅仅只是用来遍历数组，不会给我们返回新的数组
-      //   arr.forEach(function (item, idx) {
-      //     console.log(item, idx);
-      //   });
+      // arr.forEach(function (item, idx) {
+      //   console.log(item, idx);
+      // });
 
       //map方法会给我们返回一个新的数组(不会修改元素组) 在map方法所入参的函数中我们需要手动return元素给新数组，所有元素都会返回
-      var newArr = arr.map(function (item, idx) {
-        item = item * 2;
-        return item;
-      });
-      console.log(newArr);
+      // var newArr = arr.map(function (item, idx) {
+      //   item = item * 2;
+      //   return item;
+      // });
+      // console.log(newArr);
 
       //filter方法会给我们返回一个新的数组(不会修改原数组) 我们可以使用该方法来过滤数组，满足条件的元素才会返回
-      var newArr = arr.filter(function (item) {
-        if (item > 11) {
-          return true;
-        }
-      });
-      console.log(newArr);
+      // var newArr = arr.filter(function (item) {
+      //   if (item > 11) {
+      //     return true;
+      //   }
+      // });
+      // console.log(newArr);
 
       //every方法返回值是true / false，用途是来判断数组中的每一个元素是否满足要求
-      var flag = arr.every(function (item) {
-        return item > 4;
-      });
-      console.log(flag)
+      // var flag = arr.every(function (item) {
+      //   return item > 4;
+      // });
+      // console.log(flag)
 
       //some方法返回值是true / false，用途是来判断数组中的是否存在一个元素满足要求
-      var flag = arr.some(function (item) {
-        return item > 65;
-      });
-      console.log(flag)
-
+      // var flag = arr.some(function (item) {
+      //   return item > 65;
+      // });
+      // console.log(flag)
+      var sunArr = [11, 22, 33, 44, 5, 66];
       //reduce方法可以用来累计运算 （当前一次运算的返回值会作为下一次运算的第一个参数）
-      var sum = arr.reduce(function(item1,item2){
-          console.log(item1,item2)
-          return item1+item2;
-      })
-      console.log(sum)
+      var sum = sunArr.reduce(function (item1, item2) {
+        console.log(item1, "fi", item2, "se");
+        return item1 + item2;
+      });
+      console.log(sum, "x");
     </script>
   </body>
 </html>
