@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IndexedDB CRUD Demo</title>
+<script>
+// 打开IndexedDB数据库
+let db;
+const request = indexedDB.open('demoDB', 1);
+
+request.onupgradeneeded = function(event) {
+  db = event.target.result;
+  if (!db.objectStoreNames.contains('items')) {
+    db.createObjectStore('items', { keyPath: 'id' });
+  }
+};
+
+request.onerror = function(event) {
+  console.error("IndexedDB error: ", event.target.error);
+};
+
+request.onsuccess = function(event) {
+  db = event.target.result;
+};
+
+// 增加一个条目
+function addItem() {
+  const newItem = { id: Date.now(), name: 'New Item' };
+  const transaction = db.transaction(['items'], 'readwrite');
+  const store = transaction.objectStore('items');
+  const request = store.add(newItem);
+
+  request.onsuccess = function(event) {
+    console.log('Item added:', newItem);
+  };
+
+  request.onerror = function(event) {
+    console.error("Add item error: ", event.target.error);
+  };
+}
+
+// 删除一个条目
+function deleteItem(id) {
+  const transaction = db.transaction(['items'], 'readwrite');
+  const store = transaction.objectStore('items');
+  const request = store.delete(id);
+
+  request.onsuccess = function(event) {
+    console.log('Item deleted with id:', id);
+  };
+
+  request.onerror = function(event) {
+    console.error("Delete item error: ", event.target.error);
+  };
+}
+
+// 更新一个条目
+function updateItem(id, newName) {
+  const transaction = db.transaction(['items'], 'readwrite');
+  const store = transaction.objectStore('items');
+  const request = store.get(id);
+
+  request.onsuccess = function(event) {
+    const item = request.result;
+    item.name = newName;
+    const updateRequest = store.put(item);
+
+    updateRequest.onsuccess = function(event) {
+      console.log('Item updated:', item);
+    };
+
+    updateRequest.onerror = function(event) {
+      console.error("Update item error: ", event.target.error);
+    };
+  };
+
+  request.onerror = function(event) {
+    console.error("Get item error: ", event.target.error);
+  };
+}
+
+// 查询所有条目
+function listItems() {
+  const transaction = db.transaction(['items'], 'readonly');
+  const store = transaction.objectStore('items');
+  const request = store.getAll();
+
+  request.onsuccess = function(event) {
+    console.log('Items:', request.result);
+  };
+
+  request.onerror = function(event) {
+    console.error("List items error: ", event.target.error);
+  };
+}
+</script>
+</head>
+<body>
+<button onclick="addItem()">Add Item</button>
+<button onclick="deleteItem(1)">Delete Item with ID 1</button>
+<button onclick="updateItem(1, 'Updated Item')">Update Item with ID 1</button>
+<button onclick="listItems()">List All Items</button>
+</body>
+</html>
