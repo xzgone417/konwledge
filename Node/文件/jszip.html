@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Unzip and Read ZIP File Content</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+</head>
+<body>
+
+<input type="file" id="zip-file" accept=".zip">
+<div id="file-list"></div>
+
+<script>
+document.getElementById('zip-file').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (!file) {
+        return;
+    }
+
+    JSZip.loadAsync(file).then(function(zip) {
+        console.log('🚀XZG ~ JSZip.loadAsync ~ file:', file);
+        console.log('🚀XZG ~ JSZip.loadAsync ~ zip:', zip);
+        const fileList = document.getElementById('file-list');
+        fileList.innerHTML = ''; // Clear previous content
+
+        zip.forEach(function(relativePath, zipEntry) {
+            // console.log('🚀XZG ~ zip.forEach ~ relativePath:', relativePath);
+            // console.log('🚀XZG ~ zip.forEach ~ zipEntry:', zipEntry);
+            // Check if it's a file (not a directory)
+            if (!zipEntry.dir) {
+                zipEntry.async('text').then(function(fileData) {
+                    // console.log('🚀XZG ~ zipEntry.async ~ fileData:', fileData);
+                    // Create a new div for each file
+                    const fileDiv = document.createElement('div');
+                    fileDiv.innerHTML = `<strong>${relativePath}</strong>:<br><pre>${fileData}</pre>`;
+                    fileList.appendChild(fileDiv);
+                });
+            }
+        });
+    }, function(error) {
+        console.error("Error reading zip file:", error);
+    });
+});
+</script>
+
+</body>
+</html>
