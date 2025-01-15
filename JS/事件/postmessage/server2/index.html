@@ -1,0 +1,22 @@
+<!-- server2/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server 2</title>
+</head>
+<body>
+    <h1>Server 2</h1>
+    <script>
+        // 接收消息
+        window.addEventListener('message', (event) => {
+            if (event.origin === 'http://localhost:3000') {
+                console.log('Received from Server 1:', event.data);
+                // 回复消息
+                event.source.postMessage('Hello from Server 2!', event.origin);
+            }
+        });
+    </script>
+</body>
+</html>

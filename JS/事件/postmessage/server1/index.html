@@ -1,0 +1,47 @@
+<!-- server1/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server 1</title>
+</head>
+
+<body>
+    <h1>Server 1</h1>
+    <iframe src="http://localhost:4000/just.html" frameborder="0" id="myIframe"></iframe>
+    <button id="changeSrcButton">Change Iframe Source</button>
+
+    <script>
+        const iframe = document.getElementById('myIframe');
+
+        // 发送消息的函数
+        function sendMessage() {
+            const otherWindow = iframe.contentWindow;
+            if (otherWindow) {
+                otherWindow.postMessage('Hello from Server 1!', 'http://localhost:4000');
+            }
+        }
+
+        // 监听 iframe 加载完成事件
+        iframe.addEventListener('load', () => {
+            sendMessage(); // 当 iframe 加载完成时发送消息
+        });
+
+        // 改变 iframe 的 src
+        document.getElementById('changeSrcButton').addEventListener('click', () => {
+            iframe.src = 'http://localhost:4000/'; // 改变 src 地址
+            // 这里不需要额外的处理，load 事件会自动触发
+        });
+
+        // 接收消息
+        window.addEventListener('message', (event) => {
+            if (event.origin === 'http://localhost:4000') {
+                console.log('Received from Server 2:', event.data);
+            }
+        });
+    </script>
+</body>
+
+</html>
