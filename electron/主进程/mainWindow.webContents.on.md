@@ -1,0 +1,51 @@
+Electron 的 `webContents` 模块暴露了许多事件，开发者可以通过 `mainWindow.webContents.on` 方法来监听这些事件。以下是一些可用的事件列表，但请注意，这个列表可能不是完全最新的，因为 Electron API 可能会随着新版本的发布而更新。建议查看最新的 Electron 文档以获取最准确的信息。
+以下是一些可以被 `webContents.on` 监听的事件：
+
+- `did-finish-load`：网页完成加载时触发。
+- `did-frame-finish-load`：框架完成加载时触发。
+- `did-start-loading`：网页开始加载时触发。
+- `did-stop-loading`：网页停止加载时触发。
+- `did-get-response-details`：在请求开始之前，返回有关请求的资源的信息。
+- `did-get-redirect-request`：当 HTTP 请求被重定向时触发。
+- `dom-ready`：DOM 完成加载时触发。
+- `page-favicon-updated`：网页的 favicon 更新时触发。
+- `new-window`：当要创建一个新的浏览器窗口时触发。
+- `will-navigate`：当用户或网页尝试启动导航时触发。
+- `did-navigate`：导航完成时触发。
+- `did-navigate-in-page`：在页内导航完成时触发。
+- `crashed`：渲染进程崩溃时触发。
+- `plugin-crashed`：插件进程崩溃时触发。
+- `destroyed`：`webContents` 被销毁时触发。
+- `before-input-event`：在键盘事件被发送到页面前触发。
+- `console-message`：在控制台消息被触发时触发。
+- `context-menu`：当上下文菜单即将显示时触发。
+- `select-bluetooth-device`：当页面请求选择蓝牙设备时触发。
+- `select-hid-device`：当页面请求选择 HID 设备时触发。
+- `update-target-url`：当鼠标悬停在链接上时触发，以更新应用的当前地址栏。
+- `render-process-gone`：渲染进程消失或崩溃时触发。
+- `preload-error`：预加载脚本发生错误时触发。
+- `desktop-capturer-get-sources`：当调用 `desktopCapturer.getSources` 时触发。
+- `remote-get-builtin`：当远程模块尝试获取内置模块时触发。
+- `remote-get-current-web-contents`：当远程模块尝试获取当前 `webContents` 时触发。
+- `remote-get-current-window`：当远程模块尝试获取当前窗口时触发。
+- `remote-require`：当远程模块尝试使用 `require` 时触发。
+- `responsive`：当网页变为可响应时触发。
+- `unresponsive`：当网页变为不可响应时触发。
+- `login`：当网页请求基本身份验证时触发。
+- `found-in-page`：当 `findInPage` 请求完成时触发。
+- `media-started-playing`：当媒体开始播放时触发。
+- `media-paused`：当媒体暂停时触发。
+- `did-change-theme-color`：当页面的主题颜色改变时触发。
+- `cursor-changed`：当鼠标光标改变时触发。
+- `select-client-certificate`：当页面请求选择客户端证书时触发。
+- `certificate-error`：当验证证书发生错误时触发。
+- `scroll-touch-begin`：当开始触摸滚动时触发。
+- `scroll-touch-end`：当触摸滚动结束时触发。
+- `scroll-touch-edge`：当触摸滚动到边缘时触发。
+- `app-command`：当应用命令被触发时触发。
+- `will-attach-webview`：在 `<webview>` 元素附加之前触发。
+- `did-attach-webview`：在 `<webview>` 元素附加之后触发。
+- `did-fail-load`：当加载资源失败时触发。
+- `did-create-window`：当 `window.open` 被调用时触发。
+- `will-redirect`：当发生 HTTP 重定向时触发。
+  这些事件为 Electron 应用程序提供了丰富的交互和控制能力，使得开发者可以更细致地管理应用程序的行为。再次强调，查看最新的 Electron 文档是非常重要的，以确保你的应用程序使用的是最新和最准确的事件列表。
